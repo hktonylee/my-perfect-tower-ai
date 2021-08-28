@@ -1,0 +1,3 @@
+[submodule "perfect-tower-ai-compiler"]
+	path = perfect-tower-ai-compiler
+	url = git@github.com:hktonylee/perfect-tower-ai-compiler.git

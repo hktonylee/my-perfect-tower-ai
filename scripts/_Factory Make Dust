@@ -1,0 +1,8 @@
+:global int _1
+:local int a
+
+a = 0
+_1 = int.rnd(1, 5)
+executesync("_Factory Make One Dust")
+a = a + 1
+gotoif(2, a < 5)

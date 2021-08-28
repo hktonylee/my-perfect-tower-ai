@@ -1,0 +1,15 @@
+:local int i_layer
+:local int x
+
+key.m()
+
+gotoif(3, gig("Current Mine Tab") == 0)
+tab(gig("Current Mine Tab"))
+x = 0
+dig(x % 4, x / 4)
+x = x + 1
+gotoif(4, x < 16)
+newlayer()
+i_layer = i_layer + 1
+gotoif(3, i_layer < 3)
+gis("Current Mine Tab", (gig("Current Mine Tab") % 12) + 1)

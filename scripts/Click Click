@@ -1,0 +1,4 @@
+key.p()
+
+click(position())
+goto(0)

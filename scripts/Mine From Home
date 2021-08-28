@@ -1,0 +1,12 @@
+:local int x
+
+;;; actions
+show("mine", true)
+gis("Current Mine Tab", 1)
+x = 0
+click(vec(width.d() * 0.02, height.d() * 0.65))
+executesync("_Mine One Tab")
+x = x + 1
+gotoif(5, x < 12)
+click(vec(width.d() * 0.98, height.d() * 0.95))
+show("mine", false)

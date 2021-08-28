@@ -1,0 +1,8 @@
+execute("Click 8 Times")
+execute("Click 8 Times")
+execute("Click 8 Times")
+execute("Click 8 Times")
+execute("Click 8 Times")
+execute("Click 8 Times")
+execute("Click 8 Times")
+executesync("Click 8 Times")

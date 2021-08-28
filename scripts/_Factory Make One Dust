@@ -1,0 +1,6 @@
+:global int _1
+
+lis("From Dust Tier", _1)
+craft("lump", lig("From Dust Tier"), floor(double.min(double.max(0.0, count("dust", lig("From Dust Tier")) - 1000.0) / 8.0, double.max(count("dust", lig("From Dust Tier") + 1) - 500.0, 0.0))))
+gotoif(999, active("mixer"))
+produce("lump", lig("From Dust Tier") + 0, double.min(500.0, count("lump", lig("From Dust Tier"))), "mixer")

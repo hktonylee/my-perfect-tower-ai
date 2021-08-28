@@ -1,24 +1,33 @@
+
+;;; ---------------------------------------------------------------------------
+;;; Definitions
 :global int _1
 :local int fromDustTier
 
+;;; ---------------------------------------------------------------------------
+;;; Macros
 #minLowerTierCount 1000.0
 #minHigherTierCount 500.0
 #maxMixerCount 500.0
 
 #positive(x) double.max(0.0, {x})
 
-craft("lump", fromDustTier, \
-    floor(double.min( \
-        ({positive(count("dust", fromDustTier))} - {minLowerTierCount}) / 8.0, \
-        {positive(count("dust", fromDustTier + 1) - {minHigherTierCount})} \
-    )) \
-)
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    craft("lump", fromDustTier, \
+        floor(double.min( \
+            ({positive(count("dust", fromDustTier))} - {minLowerTierCount}) / 8.0, \
+            {positive(count("dust", fromDustTier + 1) - {minHigherTierCount})} \
+        )) \
+    )
 
-; If mixer is working, don't add more to it
-gotoif(999, active("mixer"))
+    ; If mixer is working, don't add more to it
+    gotoif(END, active("mixer"))
 
-; To mix the lump into higher tier dust
-produce("lump", fromDustTier, \
-    double.min({maxMixerCount}, count("lump", fromDustTier)), \
-    "mixer" \
-)
+    ; To mix the lump into higher tier dust
+    produce("lump", fromDustTier, \
+        double.min({maxMixerCount}, count("lump", fromDustTier)), \
+        "mixer" \
+    )
+
+END:

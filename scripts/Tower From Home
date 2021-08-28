@@ -1,7 +1,14 @@
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
 key.n()
 
-show("towertesting", true)
-click(vec(width.d() * 0.15, height.d() * 0.07))
-wait(120.0)
-click(vec(width.d() * 0.5, height.d() * 0.2))
-show("towertesting", false)
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    show("towertesting", true)
+
+    click(vec(width.d() * 0.15, height.d() * 0.07))
+    wait(120.0)
+    click(vec(width.d() * 0.5, height.d() * 0.2))
+    
+    show("towertesting", false)

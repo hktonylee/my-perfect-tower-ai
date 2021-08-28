@@ -1,16 +1,21 @@
 :import [Library]
 
+;;; ---------------------------------------------------------------------------
+;;; Definitions
 :local int i
 
-; impulse
+;;; ---------------------------------------------------------------------------
+;;; Impulse
 key.d()
 
-; actions
+;;; ---------------------------------------------------------------------------
+;;; Actions
 loopStart:
-  scrollbar({relvec(0.98, 0.5)}, -1., 1.)
-  click({relvec(0.83, 0.68)}) ; click the first row
-  click({relvec(0.6, 0.05)}) ; click the delete button
-  click({relvec(0.44, 0.44)}) ; click the YES button
-  i = i + 1
-  gotoif(loopStart, i < 20)
+    scrollbar({relvec(0.98, 0.5)}, -1., 1.)
+    click({relvec(0.83, 0.68)}) ; click the first row
+    click({relvec(0.6, 0.05)}) ; click the delete button
+    click({relvec(0.44, 0.44)}) ; click the YES button
+
+    i = i + 1
+    gotoif(loopStart, i < 20)
 

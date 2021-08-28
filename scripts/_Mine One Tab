@@ -1,27 +1,29 @@
 
+;;; ---------------------------------------------------------------------------
 ;;; Definitions
 :local int i_layer
 :local int x
 
+;;; ---------------------------------------------------------------------------
 ;;; Impulse
     key.m()
 
+;;; ---------------------------------------------------------------------------
 ;;; Actions
-
-    gotoif(layerStart, gig("Current Mine Tab") == 0)
+    gotoif(LAYER_START, gig("Current Mine Tab") == 0)
     tab(gig("Current Mine Tab"))
 
-layerStart:
+LAYER_START:
     x = 0
 
-digStart:
+DIG_START:
     dig(x % 4, x / 4)
     x = x + 1
-    gotoif(digStart, x < 16)
+    gotoif(DIG_START, x < 16)
 
     newlayer()
     i_layer = i_layer + 1
-    gotoif(layerStart, i_layer < 3)
+    gotoif(LAYER_START, i_layer < 3)
 
     ; Increment the tab count
     gis("Current Mine Tab", (gig("Current Mine Tab") % 12) + 1)

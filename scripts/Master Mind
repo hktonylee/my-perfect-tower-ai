@@ -1,10 +1,12 @@
+;;; ---------------------------------------------------------------------------
 ;;; impulse
 key.a()
 
+;;; ---------------------------------------------------------------------------
 ;;; actions
-executesync("Mine From Home")
-executesync("Trade From Home")
-executesync("Factory/Home")
-executesync("Tower From Home")
+    executesync("Mine From Home")
+    executesync("Trade From Home")
+    executesync("Factory/Home")
+    executesync("Tower From Home")
 
-goto(0)
+    goto(0)

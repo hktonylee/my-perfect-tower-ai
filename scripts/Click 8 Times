@@ -1,11 +1,16 @@
+
+;;; ---------------------------------------------------------------------------
+;;; Definitions
 :global double _2
 :global double _1
 
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
-click(vec(_1, _2))
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))
+    click(vec(_1, _2))

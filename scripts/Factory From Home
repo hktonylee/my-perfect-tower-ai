@@ -1,6 +1,0 @@
-key.1()
-
-show("factory", true)
-executesync("_Factory Make Dust")
-executesync("_Factory Buy Them All")
-show("factory", false)

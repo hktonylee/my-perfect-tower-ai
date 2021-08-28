@@ -1,0 +1,6 @@
+key.1()
+
+show("factory", true)
+executesync("Factory/_Make Dust")
+executesync("Factory/_Buy Them All")
+show("factory", false)

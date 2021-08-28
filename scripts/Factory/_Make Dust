@@ -1,0 +1,12 @@
+:global int _1
+:local int i
+
+;;; Actions
+    i = 0
+loopStart:
+    ; Randomly pick one of the Tier 1~5
+    _1 = int.rnd(1, 5)
+
+    executesync("Factory/_Make One Dust")
+    i = i + 1
+    gotoif(loopStart, i < 5)

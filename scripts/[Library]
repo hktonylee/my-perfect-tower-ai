@@ -1,1 +1,4 @@
 #relvec(x, y) vec(width.d() * {x}, height.d() * {y})
+
+; #numberOfScripts lua( return io.popen('.') )}
+; #numberOfScripts lua( return 5 )}

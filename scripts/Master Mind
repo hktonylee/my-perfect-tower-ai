@@ -4,7 +4,7 @@ key.a()
 ;;; actions
 executesync("Mine From Home")
 executesync("Trade From Home")
-executesync("Factory From Home")
+executesync("Factory/Home")
 executesync("Tower From Home")
 
 goto(0)

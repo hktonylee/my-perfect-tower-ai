@@ -8,10 +8,10 @@ FILES += 'Master Mind'
 FILES += 'Tower From Home'
 FILES += 'Trade From Home'
 
-FILES += 'Factory From Home'
-FILES += '_Factory Buy Them All'
-FILES += '_Factory Make Dust'
-FILES += '_Factory Make One Dust'
+FILES += 'Factory/Home'
+FILES += 'Factory/_Buy Them All'
+FILES += 'Factory/_Make Dust'
+FILES += 'Factory/_Make One Dust'
 
 FILES += 'Mine From Home'
 FILES += '_Mine One Tab'
@@ -24,4 +24,4 @@ FILES += 'Slow Click 64 times'
 FILES += '!Delete the AI'
 
 build:
-	@ cd scripts && ../perfect-tower-ai-compiler/perfect-tower-ai-compiler $(FILES)
+	@ cd scripts && ../lib/perfect-tower-ai-compiler $(FILES)

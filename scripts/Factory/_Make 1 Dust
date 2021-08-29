@@ -1,3 +1,4 @@
+:import [Library]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Definitions
@@ -10,15 +11,13 @@
 #minHigherTierCount 500.0
 #maxMixerCount 500.0
 
-#positive(x) double.max(0.0, ({x}))
-
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     fromDustTier = _1
 
     craft("lump", fromDustTier, \
         floor(double.min( \
-            ({positive(count("dust", fromDustTier))} - {minLowerTierCount}) / 8.0, \
+            ({positive(count("dust", fromDustTier))} - {minLowerTierCount}) / 4.0, \
             {positive(count("dust", fromDustTier + 1) - {minHigherTierCount})} \
         )) \
     )

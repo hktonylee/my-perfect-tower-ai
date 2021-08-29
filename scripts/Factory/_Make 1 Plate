@@ -1,0 +1,54 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Definitions
+:global int _1 ; tier
+; :local int tier
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.3()
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+#minPlateCount 1000.
+#minDustCount 1000.
+#maxDensePlateCount 100.
+
+#craftMagic.2(to, toTier, c1, c2) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.2( \
+            ({c1}), ({c2}) \
+        )}) \
+    )
+
+#craftMagic.3(to, toTier, c1, c2, c3) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.3( \
+            ({c1}), ({c2}), ({c3}) \
+        )}) \
+    )
+
+#craftLimitMax(to, toTier, maxToCount) \
+    ({maxToCount}) - count(({to}), ({toTier}))
+
+#craftLimitMin(from, fromTier, minFromCount, fromRatio) \
+    ({positive(count(({from}), ({fromTier})) - ({minFromCount}))} / ({fromRatio}))
+
+#tier _1
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+    gotoif(END, active("presser"))
+
+    {craftMagic.3( \
+        "plate.stack", {tier}, \
+        {craftLimitMax("plate.stack", {tier}, 100.)}, \
+        {craftLimitMax("plate.dense", {tier}, 100.)}, \
+        {craftLimitMin("plate", {tier}, 1000., 9.)} \
+    )}
+
+    produce("plate.stack", {tier}, count("plate.stack", {tier}), "presser")
+
+END:

@@ -12,14 +12,15 @@ key.d()
 ;;; Actions
     gotoif(LOOP_START, isopen("headquarters")) ; ensure Headquarter window is opened
     gss("message", "<color=red>Please open Headquarters windows first</color>")
+    
+    {relscrollbar(0.98, 0.5, -1.0, 1.0)} ; scroll to the top of AI list
 
 LOOP_START:
-    {relscrollbar(0.98, 0.5, -1.0, 1.0)} ; scroll to the top of AI list
     {relclick(0.83, 0.68)} ; click the first row
     {relclick(0.6, 0.05)} ; click the delete button
     {relclick(0.44, 0.44)} ; click the YES button
 
     i = i + 1
-    gotoif(LOOP_START, i < {kTotalAICount})
+    gotoif(LOOP_START, i < {kTotalAICount} + 1)
 
 END:

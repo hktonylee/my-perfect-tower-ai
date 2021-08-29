@@ -1,21 +1,21 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Definitions
-:local int a
-:local double y
-:global double _2
+:local int i
 :local double x
+:local double y
 :global double _1
+:global double _2
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     x = _1
     y = _2
 
-    a = 0
+    i = 0
 START:
     click(vec(x, y))
     wait(0.2)
 
-    a = a + 1
-    gotoif(START, a < 64)
+    i = i + 1
+    gotoif(START, i < 64)

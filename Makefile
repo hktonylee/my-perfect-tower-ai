@@ -2,6 +2,7 @@
 FILES = 
 FILES += '!Enable the AI'
 FILES += '[Library]'
+FILES += 'Factory/[CraftMagic]'
 FILES += 'Cursor/Position'
 
 FILES += 'Main'
@@ -25,5 +26,10 @@ FILES += 'Cursor/Slow Click 64'
 
 FILES += '!Delete the AI'
 
-build:
+build: update-files-count
 	@ cd scripts && ../lib/perfect-tower-ai-compiler $(FILES)
+
+update-files-count:
+	@ ./update-files-count $(FILES)
+
+.PHONY: build update-files-count

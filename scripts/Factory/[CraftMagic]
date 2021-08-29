@@ -1,0 +1,26 @@
+#craftMagic.2(to, toTier, c1, c2) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.2( \
+            ({c1}), ({c2}) \
+        )}) \
+    )
+
+#craftMagic.3(to, toTier, c1, c2, c3) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.3( \
+            ({c1}), ({c2}), ({c3}) \
+        )}) \
+    )
+
+#craftMagic.4(to, toTier, c1, c2, c3) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.4( \
+            ({c1}), ({c2}), ({c3}), ({c4}) \
+        )}) \
+    )
+
+#craftLimitMax(to, toTier, maxToCount, toRatio) \
+    {positive(({maxToCount}) - count(({to}), ({toTier})))} / ({toRatio})
+
+#craftLimitMin(from, fromTier, minFromCount, fromRatio) \
+    {positive(count(({from}), ({fromTier})) - ({minFromCount}))} / ({fromRatio})

@@ -1,4 +1,5 @@
 :import [Library]
+:import Factory/[CraftMagic]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Definitions
@@ -15,26 +16,6 @@ key.3()
 #minDustCount 1000.
 #maxDensePlateCount 100.
 
-#craftMagic.2(to, toTier, c1, c2) \
-    craft(({to}), ({toTier}), \
-        floor({double.min.2( \
-            ({c1}), ({c2}) \
-        )}) \
-    )
-
-#craftMagic.3(to, toTier, c1, c2, c3) \
-    craft(({to}), ({toTier}), \
-        floor({double.min.3( \
-            ({c1}), ({c2}), ({c3}) \
-        )}) \
-    )
-
-#craftLimitMax(to, toTier, maxToCount) \
-    ({maxToCount}) - count(({to}), ({toTier}))
-
-#craftLimitMin(from, fromTier, minFromCount, fromRatio) \
-    ({positive(count(({from}), ({fromTier})) - ({minFromCount}))} / ({fromRatio}))
-
 #tier _1
 
 ;;; ---------------------------------------------------------------------------
@@ -44,8 +25,8 @@ key.3()
 
     {craftMagic.3( \
         "plate.stack", {tier}, \
-        {craftLimitMax("plate.stack", {tier}, 100.)}, \
-        {craftLimitMax("plate.dense", {tier}, 100.)}, \
+        {craftLimitMax("plate.stack", {tier}, 100., 1.)}, \
+        {craftLimitMax("plate.dense", {tier}, 100., 1.)}, \
         {craftLimitMin("plate", {tier}, 1000., 9.)} \
     )}
 

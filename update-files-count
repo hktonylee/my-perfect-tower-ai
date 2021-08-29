@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+count="$#"
+
+sed -i'' "s/#kTotalAICount.*/#kTotalAICount $count/g" './scripts/[Library]'
+

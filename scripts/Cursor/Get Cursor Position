@@ -5,5 +5,8 @@ wakeup()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    gss("Mouse Pos", (d2s(round((x(position()) / width.d()) * 100.0) / 100.0) . "") . (" , " . d2s(round((y(position()) / height.d()) * 100.0) / 100.0)))
+    gss("Mouse Pos", \
+        (d2s(round((x(position()) / width.d()) * 100.0) / 100.0) . "") . \
+        (" , " . d2s(round((y(position()) / height.d()) * 100.0) / 100.0)) \
+    )
     goto(0)

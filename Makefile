@@ -1,25 +1,26 @@
 
 FILES = 
-FILES += '[Library]'
 FILES += '!Enable the AI'
+FILES += '[Library]'
+FILES += 'Cursor/Get Cursor Position'
 
-FILES += 'Master Mind'
+FILES += 'Main'
 
-FILES += 'Tower From Home'
-FILES += 'Trade From Home'
+FILES += 'Tower/Home'
 
 FILES += 'Factory/Home'
 FILES += 'Factory/_Buy Them All'
 FILES += 'Factory/_Make Dust'
 FILES += 'Factory/_Make One Dust'
 
-FILES += 'Mine From Home'
-FILES += '_Mine One Tab'
+FILES += 'Mine/Home'
+FILES += 'Mine/_Mine One Tab'
 
-FILES += 'Get Cursor Position'
-FILES += 'Click 8 Times'
-FILES += 'Click Click'
-FILES += 'Slow Click 64 times'
+FILES += 'Trade/Home'
+
+FILES += 'Cursor/Click 8 Times'
+FILES += 'Cursor/Click Click'
+FILES += 'Cursor/Slow Click 64 times'
 
 FILES += '!Delete the AI'
 

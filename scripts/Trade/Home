@@ -1,0 +1,23 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declaration
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+    ; key.2()
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    show("tradingpost", true)
+
+    {relclick(0.21, 0.85)} ; Click the Trade Offers
+    
+    {relscrollbar(0.5, 0.5, -1., 1.)} ; Scroll to the top
+    {relclick(0.64, 0.83)} ; Click the first item
+
+CLICK_LOOP:
+    wait(0.1)
+    {relclick(0.2, 0.46)} ; Click on confirm button
+    gotoif(CLICK_LOOP, offerCount() > 0)
+    show("tradingpost", false)

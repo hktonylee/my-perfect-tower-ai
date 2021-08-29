@@ -1,4 +1,22 @@
-#relvec(x, y) vec(width.d() * {x}, height.d() * {y})
+
+;;; ---------------------------------------------------------------------------
+;;; Constants
+
+#kTotalAICount 16
+
+
+;;; ---------------------------------------------------------------------------
+;;; Utilities
+
+; Convert from relative vector to screen vector
+#relvec(x, y) vec(width.d() * ({x}), height.d() * ({y}))
+
+; Click at relative location
+#relclick(x, y) click(vec(width.d() * ({x}), height.d() * ({y})))
+; #relclick(x, y) click({relvec(x, y)})
+
+; Scroll the scrollbar at relative location to dx and dy
+#relscrollbar(x, y, dx, dy) scrollbar(vec(width.d() * ({x}), height.d() * ({y})), ({dx}), ({dy}))
 
 ; #numberOfScripts lua( return io.popen('.') )}
 ; #numberOfScripts lua( return 5 )}

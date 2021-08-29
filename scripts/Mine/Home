@@ -11,7 +11,7 @@
     x = 0
 START:
     click(vec(width.d() * 0.02, height.d() * 0.65))
-    executesync("_Mine One Tab")
+    executesync("Mine/_Mine One Tab")
     
     x = x + 1
     gotoif(START, x < 12)

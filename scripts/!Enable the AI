@@ -1,1 +1,50 @@
 :import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:local int n
+:local int totalItemCount
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+; key.1()
+wakeup()
+
+;;; ---------------------------------------------------------------------------
+;;; Macro
+#kAIPerPage 14
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+LOOP_START:
+    n = (n + 1) % 16
+
+    {relscrollbar( \
+        0.83, \
+        0.4, \
+        -1., \
+        1. - ( \
+            i2d(min(n, {kTotalAICount} - {kAIPerPage})) \
+            / i2d({kTotalAICount} - {kAIPerPage}) \
+        ) \
+    )}
+    ; {relclick(0.83, 0.7)}
+    gds("tmp", 0.7 - 0.045 * i2d(max(\
+        0, \
+        (n - {kTotalAICount} + {kAIPerPage}) \
+    )))
+    {relclick( \
+        0.83, \
+        0.7 - 0.045 * i2d(max(\
+            0, \
+            (n - {kTotalAICount} + {kAIPerPage}) \
+        )) \
+    )}
+
+    {relclick(0.43, 0.49)} ; click "Enabled" button
+    {relclick(0.48, 0.12)} ; click "Save" button
+
+    gotoif(LOOP_START, n != 0)
+    
+

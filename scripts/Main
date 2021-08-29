@@ -4,9 +4,9 @@ key.a()
 
 ;;; ---------------------------------------------------------------------------
 ;;; actions
-    executesync("Mine From Home")
-    executesync("Trade From Home")
+    executesync("Mine/Home")
+    executesync("Trade/Home")
     executesync("Factory/Home")
-    executesync("Tower From Home")
+    executesync("Tower/Home")
 
     goto(0)

@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Definitions
 :local int i_layer
-:local int x
+:local int i
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -14,12 +14,12 @@
     tab(gig("Current Mine Tab"))
 
 LAYER_START:
-    x = 0
+    i = 0
 
 DIG_START:
-    dig(x % 4, x / 4)
-    x = x + 1
-    gotoif(DIG_START, x < 16)
+    dig(i % 4, i / 4)
+    i = i + 1
+    gotoif(DIG_START, i < 16)
 
     newlayer()
     i_layer = i_layer + 1

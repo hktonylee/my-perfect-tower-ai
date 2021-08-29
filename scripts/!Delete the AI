@@ -10,12 +10,16 @@ key.d()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-loopStart:
-    scrollbar({relvec(0.98, 0.5)}, -1., 1.)
-    click({relvec(0.83, 0.68)}) ; click the first row
-    click({relvec(0.6, 0.05)}) ; click the delete button
-    click({relvec(0.44, 0.44)}) ; click the YES button
+    gotoif(LOOP_START, isopen("headquarters")) ; ensure Headquarter window is opened
+    gss("message", "<color=red>Please open Headquarters windows first</color>")
+
+LOOP_START:
+    {relscrollbar(0.98, 0.5, -1.0, 1.0)} ; scroll to the top of AI list
+    {relclick(0.83, 0.68)} ; click the first row
+    {relclick(0.6, 0.05)} ; click the delete button
+    {relclick(0.44, 0.44)} ; click the YES button
 
     i = i + 1
-    gotoif(loopStart, i < 20)
+    gotoif(LOOP_START, i < {kTotalAICount})
 
+END:

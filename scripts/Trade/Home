@@ -17,6 +17,6 @@
 
 CLICK_LOOP:
     wait(0.1)
-    {relclick(0.2, 0.46)} ; Click on confirm button
+    {relclick(0.20, 0.50)} ; Click on "Trade" button
     gotoif(CLICK_LOOP, offerCount() > 0)
     show("tradingpost", false)

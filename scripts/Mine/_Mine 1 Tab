@@ -23,7 +23,7 @@ DIG_START:
 
     newlayer()
     i_layer = i_layer + 1
-    gotoif(LAYER_START, i_layer < 3)
+    gotoif(LAYER_START, i_layer < 5)
 
     ; Increment the tab count
     gis("Current Mine Tab", (gig("Current Mine Tab") % 12) + 1)

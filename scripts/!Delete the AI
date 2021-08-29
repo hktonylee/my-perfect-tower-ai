@@ -10,14 +10,18 @@ key.d()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    gotoif(LOOP_START, isopen("headquarters")) ; ensure Headquarter window is opened
-    gss("message", "<color=red>Please open Headquarters windows first</color>")
+    ; gotoif(LOOP_START, isopen("headquarters")) ; ensure Headquarter window is opened
+    show("headquarters", true)
+
+    ; gss("message", "<color=red>Please open Headquarters windows first</color>")
     
+    {relclick(0.21, 0.55)} ; click the "Facility AI" button
+
     {relscrollbar(0.98, 0.5, -1.0, 1.0)} ; scroll to the top of AI list
 
 LOOP_START:
-    {relclick(0.83, 0.68)} ; click the first row
-    {relclick(0.6, 0.05)} ; click the delete button
+    {relclick(0.83, 0.71)} ; click the first row
+    {relclick(0.60, 0.05)} ; click the delete button
     {relclick(0.44, 0.44)} ; click the YES button
 
     i = i + 1

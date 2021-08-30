@@ -26,6 +26,7 @@ isopen("factory")
 ;;; Actions
     fromDustTier = _1
 
+    ; Make dust from lump
     {craftMagic.2( \
         "lump", fromDustTier, \
         {itemLimitMin("dust", fromDustTier, {minLowerTierCount}, 4.)}, \
@@ -35,7 +36,7 @@ isopen("factory")
     ; If mixer is working, don't add more to it
     gotoif(SKIP_MIXER, active("mixer"))
 
-    ; To mix the lump into higher tier dust
+    ; Make lump, so as to mix the lump into higher tier dust
     produce("lump", fromDustTier, \
         double.min({maxMixerCount}, count("lump", fromDustTier)), \
         "mixer" \
@@ -46,7 +47,7 @@ SKIP_MIXER:
     ; If crusher is working, don't add more to it
     gotoif(SKIP_CRUSHER, active("crusher"))
 
-    ; To make the dust from orc
+    ; Make dust from orc
     produce("ore", fromDustTier, \
         double.min({maxCrusherCount(fromDustTier)}, count("ore", fromDustTier)), \
         "crusher" \

@@ -26,15 +26,18 @@ isopen("factory")
 ;;; Actions
 
     gotoif(SKIP_OVEN, active("oven"))
+    
     ; make ingot
     {produceMagic.2( \
         "dust", {tier}, "oven", \
         {itemLimitMax("ingot", {tier}, 200., 1.)}, \
         {itemLimitMin("dust", {tier}, 500., 1.)} \
     )}
+
 SKIP_OVEN:
 
     gotoif(SKIP_PRESSER, active("presser"))
+
     ; Make plate
     {produceMagic.2( \
         "ingot", {tier}, "presser", \
@@ -43,6 +46,7 @@ SKIP_OVEN:
     )}
 
     gotoif(SKIP_PRESSER, active("presser"))
+
     ; Make stacked plate
     {craftMagic.3( \
         "plate.stack", {tier}, \
@@ -53,4 +57,5 @@ SKIP_OVEN:
 
     ; Make dense plate
     produce("plate.stack", {tier}, count("plate.stack", {tier}), "presser")
+
 SKIP_PRESSER:

@@ -1,6 +1,6 @@
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
 :local int i
 :local double x
 :local double y

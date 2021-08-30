@@ -1,7 +1,7 @@
 :import [Library]
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
 :global int _1
 :local int fromDustTier
 

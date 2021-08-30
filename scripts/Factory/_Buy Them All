@@ -1,7 +1,7 @@
 :import [Library]
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
 :global double _1
 :global double _2
 :local int i

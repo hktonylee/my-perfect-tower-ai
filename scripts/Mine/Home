@@ -1,12 +1,13 @@
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
+:global int current_mine_tab
 :local int x
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     show("mine", true)
-    gis("Current Mine Tab", 1)
+    current_mine_tab = 1
 
     x = 0
 START:

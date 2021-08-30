@@ -1,0 +1,25 @@
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global double time
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+
+;;; ---------------------------------------------------------------------------
+;;; Macro
+#kTickCount "<size=0>_tick_count"
+#kTickPerSecond "</size>tick_per_second"
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    wait(1.)
+    execute("Timer/_Run 1000")
+
+    ; Need to compensate that setting kTickCount = 0 needs another tick
+    gds({kTickPerSecond}, gdg({kTickCount}) + 1.)
+
+    gds({kTickCount}, 0.)
+
+    ; The timer does not stop exactly in full tick. Assume in the middle is a safer bet
+    time = time + 1. + 1. / (gdg({kTickPerSecond}) + 0.5)

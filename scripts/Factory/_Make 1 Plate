@@ -2,7 +2,7 @@
 :import Factory/[CraftMagic]
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
 :global int _1 ; tier
 ; :local int tier
 

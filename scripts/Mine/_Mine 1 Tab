@@ -1,8 +1,9 @@
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
+:global int dig_index
+:global int current_mine_tab
 :local int i_layer
-:local int i
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -10,20 +11,19 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    gotoif(LAYER_START, gig("Current Mine Tab") == 0)
-    tab(gig("Current Mine Tab"))
+    gotoif(LAYER_START, current_mine_tab == 0)
+    tab(current_mine_tab)
+    current_mine_tab = (current_mine_tab % 12) + 1 ; Increment the current_mine_tab
 
 LAYER_START:
-    i = 0
+    dig_index = 0
 
 DIG_START:
-    dig(i % 4, i / 4)
-    i = i + 1
-    gotoif(DIG_START, i < 16)
+    execute("Mine/_Dig 4")
+    dig_index = dig_index + 4
+    gotoif(DIG_START, dig_index < 12)
+    executesync("Mine/_Dig 4")
 
     newlayer()
     i_layer = i_layer + 1
-    gotoif(LAYER_START, i_layer < 5)
-
-    ; Increment the tab count
-    gis("Current Mine Tab", (gig("Current Mine Tab") % 12) + 1)
+    gotoif(LAYER_START, i_layer < 3)

@@ -1,20 +1,16 @@
+
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int _1
-:local int i
+:global double time
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-; key.2()
+wakeup()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    i = 0
-LOOP_START:
-    ; Randomly pick one of the Tier 1~5
-    _1 = int.rnd(1, 7)
+    time = 0.0
 
-    executesync("Factory/_Make 1 Dust")
-    executesync("Factory/_Make 1 Plate")
-    i = i + 1
-    gotoif(LOOP_START, i < 5)
+    execute("Timer/_Run 1") ; Per tick run *must* run before per second run
+    execute("Timer/_Run 1000")
+

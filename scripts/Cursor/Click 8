@@ -1,6 +1,6 @@
 
 ;;; ---------------------------------------------------------------------------
-;;; Definitions
+;;; Declarations
 :global double _2
 :global double _1
 

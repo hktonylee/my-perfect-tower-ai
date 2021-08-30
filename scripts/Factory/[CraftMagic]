@@ -12,10 +12,24 @@
         )}) \
     )
 
-#craftMagic.4(to, toTier, c1, c2, c3) \
+#craftMagic.4(to, toTier, c1, c2, c3, c4) \
     craft(({to}), ({toTier}), \
         floor({double.min.4( \
             ({c1}), ({c2}), ({c3}), ({c4}) \
+        )}) \
+    )
+
+#craftMagic.5(to, toTier, c1, c2, c3, c4, c5) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.5( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}) \
+        )}) \
+    )
+
+#craftMagic.6(to, toTier, c1, c2, c3, c4, c5, c6) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.6( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}) \
         )}) \
     )
 

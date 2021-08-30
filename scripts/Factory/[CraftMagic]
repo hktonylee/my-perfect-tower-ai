@@ -33,8 +33,48 @@
         )}) \
     )
 
-#craftLimitMax(to, toTier, maxToCount, toRatio) \
+#produceMagic.2(to, toTier, machine, c1, c2) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.2( \
+            ({c1}), ({c2}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.3(to, toTier, machine, c1, c2, c3) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.3( \
+            ({c1}), ({c2}), ({c3}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.4(to, toTier, machine, c1, c2, c3, c4) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.4( \
+            ({c1}), ({c2}), ({c3}), ({c4}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.5(to, toTier, machine, c1, c2, c3, c4, c5) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.5( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.6(to, toTier, machine, c1, c2, c3, c4, c5, c6) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.6( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}) \
+        )}), \
+        ({machine}) \
+    )
+
+#itemLimitMax(to, toTier, maxToCount, toRatio) \
     {positive(({maxToCount}) - count(({to}), ({toTier})))} / ({toRatio})
 
-#craftLimitMin(from, fromTier, minFromCount, fromRatio) \
+#itemLimitMin(from, fromTier, minFromCount, fromRatio) \
     {positive(count(({from}), ({fromTier})) - ({minFromCount}))} / ({fromRatio})

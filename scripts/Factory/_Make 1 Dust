@@ -13,7 +13,7 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
 #minLowerTierCount 1000.0
-#minHigherTierCount 100.0
+#minHigherTierCount 800.0
 #maxMixerCount 500.0
 
 ; Tier1: 1440
@@ -28,8 +28,8 @@ isopen("factory")
 
     {craftMagic.2( \
         "lump", fromDustTier, \
-        {craftLimitMin("dust", fromDustTier, {minLowerTierCount}, 4.)}, \
-        {craftLimitMin("dust", fromDustTier + 1, {minHigherTierCount}, 1.)} \
+        {itemLimitMin("dust", fromDustTier, {minLowerTierCount}, 4.)}, \
+        {itemLimitMin("dust", fromDustTier + 1, {minHigherTierCount}, 1.)} \
     )}
 
     ; If mixer is working, don't add more to it

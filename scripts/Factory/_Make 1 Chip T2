@@ -1,12 +1,14 @@
+:import [Library]
+:import Factory/[CraftMagic]
+
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int _1
-:local int i
-:local int start
+:global int _1 ; tier
+; :local int tier
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-key.5()
+key.3()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
@@ -14,21 +16,20 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#MakeMaxTier 8
+#minPlateCount 1000.
+#minDustCount 1000.
+#maxDensePlateCount 100.
+
+#tier _1
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    start = int.rnd(1, {MakeMaxTier})
-    i = start
-LOOP_START:
-    _1 = i
 
-    executesync("Factory/_Make 1 Plate")
-    ; executesync("Factory/_Make 1 Chip")
-    executesync("Factory/_Make 1 Dust")
 
-    ; Make from the highest tier, to prevent "starvation"
-    i = (i - 2 + {MakeMaxTier}) % {MakeMaxTier} + 1
-    gotoif(LOOP_START, i != start)
+    {produceMagic.2( \
+        "plate", 4, "refinery", \
+        {itemLimitMax("plate.circuit", 4, 100., 1.)}, \
+        {itemLimitMin("plate", 4, 50., 1.)} \
+    )}
 
-    gu("_1")
+

@@ -8,7 +8,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-key.3()
+; key.3()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
@@ -18,22 +18,39 @@ isopen("factory")
 ;;; Macros
 #minPlateCount 1000.
 #minDustCount 1000.
-#maxDensePlateCount 100.
+#maxDensePlateCount(tier) max(20., 100. - 15. * i2d({tier}))
 
 #tier _1
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 
-    gotoif(END, active("presser"))
+    gotoif(SKIP_OVEN, active("oven"))
+    ; make ingot
+    {produceMagic.2( \
+        "dust", {tier}, "oven", \
+        {itemLimitMax("ingot", {tier}, 200., 1.)}, \
+        {itemLimitMin("dust", {tier}, 500., 1.)} \
+    )}
+SKIP_OVEN:
 
-    {craftMagic.3( \
-        "plate.stack", {tier}, \
-        {craftLimitMax("plate.stack", {tier}, 100., 1.)}, \
-        {craftLimitMax("plate.dense", {tier}, 100., 1.)}, \
-        {craftLimitMin("plate", {tier}, 1000., 9.)} \
+    gotoif(SKIP_PRESSER, active("presser"))
+    ; Make plate
+    {produceMagic.2( \
+        "ingot", {tier}, "presser", \
+        {itemLimitMax("plate", {tier}, 200., 1.)}, \
+        {itemLimitMin("ingot", {tier}, 100., 1.)} \
     )}
 
-    produce("plate.stack", {tier}, count("plate.stack", {tier}), "presser")
+    gotoif(SKIP_PRESSER, active("presser"))
+    ; Make stacked plate
+    {craftMagic.3( \
+        "plate.stack", {tier}, \
+        {itemLimitMax("plate.stack", {tier}, {maxDensePlateCount({tier})}, 1.)}, \
+        {itemLimitMax("plate.dense", {tier}, {maxDensePlateCount({tier})}, 1.)}, \
+        {itemLimitMin("plate", {tier}, 100., 9.)} \
+    )}
 
-END:
+    ; Make dense plate
+    produce("plate.stack", {tier}, count("plate.stack", {tier}), "presser")
+SKIP_PRESSER:

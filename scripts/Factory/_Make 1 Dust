@@ -13,7 +13,7 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
 #minLowerTierCount 1000.0
-#minHigherTierCount 500.0
+#minHigherTierCount 100.0
 #maxMixerCount 500.0
 
 ; Tier1: 1440

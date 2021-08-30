@@ -1,3 +1,4 @@
+:import [Library]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
@@ -10,6 +11,8 @@ wakeup()
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     time = 0.0
+    gds({kTickCount}, 0.)
+    gds({kTickPerSecond}, 0.)
 
     execute("Timer/_Run 1") ; Per tick run *must* run before "_Run 1000"
     execute("Timer/_Run 1000")

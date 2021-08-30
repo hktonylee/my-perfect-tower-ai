@@ -10,13 +10,13 @@ key.d()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    ; gotoif(LOOP_START, isopen("headquarters")) ; ensure Headquarter window is opened
     show("headquarters", true)
+    gotoif(END, false == isopen("headquarters")) ; ensure Headquarter window is opened
 
     ; gss("message", "<color=red>Please open Headquarters windows first</color>")
     
+; START:
     {relclick(0.21, 0.55)} ; click the "Facility AI" button
-
     {relscrollbar(0.98, 0.5, -1.0, 1.0)} ; scroll to the top of AI list
 
 LOOP_START:

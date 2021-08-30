@@ -2,6 +2,7 @@
 ;;; Declarations
 :global int _1
 :local int i
+:local int start
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -12,13 +13,21 @@ key.5()
 isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
+;;; Macros
+#MakeMaxTier 8
+
+;;; ---------------------------------------------------------------------------
 ;;; Actions
-    i = 0
+    start = int.rnd(1, {MakeMaxTier})
+    i = start
 LOOP_START:
-    ; Randomly pick one of the Tier 1~5
-    _1 = int.rnd(1, 8)
+    _1 = i
 
     executesync("Factory/_Make 1 Dust")
     executesync("Factory/_Make 1 Plate")
-    i = i + 1
-    gotoif(LOOP_START, i < 5)
+
+    ; Make from the highest tier, to prevent "starvation"
+    i = (i - 2 + {MakeMaxTier}) % {MakeMaxTier} + 1
+    gotoif(LOOP_START, i != start)
+
+    gu("_1")

@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 25
+#kTotalAICount 26
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -10,6 +10,9 @@
 #KeyUp "^"
 #KeyEnter "Z"
 #KeyExit "X"
+
+#kTickCount "<size=0>_tick_count"
+#kTickPerSecond "</size>tick_per_second"
 
 ;;; ---------------------------------------------------------------------------
 ;;; Utilities
@@ -27,7 +30,7 @@
 #gridClick(x1, y1, x2, y2, nCol, nRow, i) \
     {relclick( \
         ({x1}) + if(({nCol}) <= 1, 0.0, (({x2}) - ({x1})) * i2d(({i}) % ({nCol})) / i2d(({nCol}) - 1)), \
-        ({y1}) - (({y1}) - ({y2})) * i2d(({i}) / ({nCol})) / i2d(({nRow}) - 1) \
+        ({y1}) - if(({nRow}) <= 1, 0.0, (({y1}) - ({y2})) * i2d(({i}) / ({nCol})) / i2d(({nRow}) - 1)) \
     )}
 
 ; Scroll the scrollbar at relative location to dx and dy
@@ -43,20 +46,20 @@
 #double.min.5(a, b, c, d, e) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), ({e}))))))
 #double.min.6(a, b, c, d, e, f) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), double.min(({e}), ({f}))))))
 
-#_lastTime(name) ("last_time[" . ({name}) . "]")
+#lastTime(name) ("last_time[" . ({name}) . "]")
 
 ; Guard to prevent too frequent executions
 #requireMinRestSecond1(name, second) \
     gotoif(\
         999, \
-        (gdg({_lastTime({name})}) > 0.) \
+        (gdg({lastTime({name})}) > 0.) \
         && ( \
-            gdg("time") - gdg({_lastTime({name})}) < ({second}) \
+            gdg("time") - gdg({lastTime({name})}) < ({second}) \
         ) \
     )
 
 #requireMinRestSecond2(name) \
-    gds({_lastTime({name})}, round(gdg("time")))
+    gds({lastTime({name})}, round(gdg("time")))
 
 #gotoIfKeyLeft(label) gotoif(({label}), gsg("input") == KeyLeft)
 #gotoIfKeyRight(label) gotoif(({label}), gsg("input") == KeyRight)

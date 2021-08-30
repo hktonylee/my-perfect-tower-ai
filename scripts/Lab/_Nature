@@ -3,10 +3,12 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
 :local int i
+:local int j
+:local int k
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-; key.8()
+key.8()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
@@ -14,25 +16,39 @@ isopen("laboratory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
+#gridClickDebug1(x1, y1, x2, y2, nCol, nRow, i) \
+    gds("tmp1",  \
+        ({x1}) + if(({nCol}) <= 1, 0.0, (({x2}) - ({x1})) * i2d(({i}) % ({nCol})) / i2d(({nCol}) - 1)) \
+    )
+
+#gridClickDebug2(x1, y1, x2, y2, nCol, nRow, i) \
+    gds("tmp2",  \
+        ({y1}) - if(({nRow}) <= 1, 0.0, (({y1}) - ({y2})) * i2d(({i}) / ({nCol})) / i2d(({nRow}) - 1)) \
+    )
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     {requireMinRestSecond1("Nature", 300.)}
     {requireMinRestSecond2("Nature")}
 
+    k = 0
+CLICK_START:
+    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, int.rnd(0, 24))}
+    k = k + 1
+    gotoif(CLICK_START, k < 1000)
+
+
     ; Try to harvest all the plants first
-    i = 0
-HARVEST_START:
-    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
-    i = i + 1
-    gotoif(HARVEST_START, i < 5 * 5)
+; HARVEST_START:
+;     
+;     i = i + 1
+;     gotoif(HARVEST_START, i < 5 * 5)
 
     ; Try to plant stuff
-    {relscrollbar(0.48, 0.50, -1.0, 1.0)}
-    {relclick(0.47, 0.39)}
-    ; Try to harvest all the plants first
-    i = 0
+    {relscrollbar(0.48, 0.50, -1.0, 1.0)} ; scroll the seed list
+    {relclick(0.47, 0.39)} ; pick the 3rd one
+
 PLANT_START:
-    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
-    i = i + 1
-    gotoif(PLANT_START, i < 5 * 5)
+    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, j)}
+    j = j + 1
+    gotoif(PLANT_START, j < 5 * 5)

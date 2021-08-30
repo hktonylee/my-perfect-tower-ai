@@ -1,13 +1,13 @@
+:import [Library]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
+:global string input
 
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.x()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    show("laboratory", true)
-
-    executesync("Lab/_Nature")
-    ; executesync("Lab/_Electric") ; no automation
-
-    show("laboratory", false)
+input = {KeyExit}

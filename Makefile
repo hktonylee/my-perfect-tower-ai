@@ -23,6 +23,7 @@ FILES += 'Trade/Home'
 
 FILES += 'Lab/Home'
 FILES += 'Lab/_Nature'
+FILES += 'Lab/_Electric'
 
 FILES += 'Cursor/Click 8'
 FILES += 'Cursor/Click Click'
@@ -31,6 +32,13 @@ FILES += 'Cursor/Slow Click 64'
 FILES += 'Timer/Main'
 FILES += 'Timer/_Run 1'
 FILES += 'Timer/_Run 1000'
+
+# FILES += 'Keyboard/Left'
+# FILES += 'Keyboard/Right'
+# FILES += 'Keyboard/Up'
+# FILES += 'Keyboard/Down'
+# FILES += 'Keyboard/Enter'
+# FILES += 'Keyboard/Exit'
 
 FILES += '!Delete the AI'
 

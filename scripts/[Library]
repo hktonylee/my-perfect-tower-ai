@@ -2,8 +2,14 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 24
+#kTotalAICount 25
 
+#KeyLeft "<"
+#KeyRight ">"
+#KeyDown "v"
+#KeyUp "^"
+#KeyEnter "Z"
+#KeyExit "X"
 
 ;;; ---------------------------------------------------------------------------
 ;;; Utilities
@@ -51,3 +57,11 @@
 
 #requireMinRestSecond2(name) \
     gds({_lastTime({name})}, round(gdg("time")))
+
+#gotoIfKeyLeft(label) gotoif(({label}), gsg("input") == KeyLeft)
+#gotoIfKeyRight(label) gotoif(({label}), gsg("input") == KeyRight)
+#gotoIfKeyUp(label) gotoif(({label}), gsg("input") == KeyUp)
+#gotoIfKeyDown(label) gotoif(({label}), gsg("input") == KeyDown)
+#gotoIfKeyEnter(label) gotoif(({label}), gsg("input") == KeyEnter)
+#gotoIfKeyExit(label) gotoif(({label}), gsg("input") == KeyExit)
+#clearKey gss("input", "")

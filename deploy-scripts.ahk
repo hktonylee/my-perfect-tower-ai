@@ -45,7 +45,7 @@ RelRightClick(x, y) {
 ; RelClick(0.20, 0.46) ; Facility AI
 
 Send d ; Delete them all
-Sleep, 1000
+Sleep, 1500
 
 RelClick(0.94, 0.05) ; "Import"
 Sleep, 100
@@ -64,7 +64,7 @@ Send {F4}
 Sleep, 50
 
 Send {F4}
-Sleep, 1000
+Sleep, 1500
 
 RelClick(0.98, 0.96) ; Click the exit button
 Send {F4}

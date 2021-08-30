@@ -1,4 +1,5 @@
 :import [Library]
+:import Factory/[CraftMagic]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
@@ -15,19 +16,24 @@ isopen("factory")
 #minHigherTierCount 500.0
 #maxMixerCount 500.0
 
+; Tier1: 1440
+; Tier2: 500
+; Tier3: 290
+#maxCrusherCount(tier) (2000. / i2d({tier}))
+
+
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     fromDustTier = _1
 
-    craft("lump", fromDustTier, \
-        floor(double.min( \
-            ({positive(count("dust", fromDustTier))} - {minLowerTierCount}) / 4.0, \
-            {positive(count("dust", fromDustTier + 1) - {minHigherTierCount})} \
-        )) \
-    )
+    {craftMagic.2( \
+        "lump", fromDustTier, \
+        {craftLimitMin("dust", fromDustTier, {minLowerTierCount}, 4.)}, \
+        {craftLimitMin("dust", fromDustTier + 1, {minHigherTierCount}, 1.)} \
+    )}
 
     ; If mixer is working, don't add more to it
-    gotoif(END, active("mixer"))
+    gotoif(SKIP_MIXER, active("mixer"))
 
     ; To mix the lump into higher tier dust
     produce("lump", fromDustTier, \
@@ -35,4 +41,15 @@ isopen("factory")
         "mixer" \
     )
 
-END:
+SKIP_MIXER:
+
+    ; If crusher is working, don't add more to it
+    gotoif(SKIP_CRUSHER, active("crusher"))
+
+    ; To make the dust from orc
+    produce("ore", fromDustTier, \
+        double.min({maxCrusherCount(fromDustTier)}, count("ore", fromDustTier)), \
+        "crusher" \
+    )
+
+SKIP_CRUSHER:

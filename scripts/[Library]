@@ -26,7 +26,7 @@
 ; (x2, y2) must be bottom-right
 #gridClick(x1, y1, x2, y2, nCol, nRow, i) \
     {relclick( \
-        ({x1}) + (({x2}) - ({x1})) * i2d(({i}) % ({nCol})) / i2d(({nCol}) - 1), \
+        ({x1}) + if(({nCol}) <= 1, 0.0, (({x2}) - ({x1})) * i2d(({i}) % ({nCol})) / i2d(({nCol}) - 1)), \
         ({y1}) - (({y1}) - ({y2})) * i2d(({i}) / ({nCol})) / i2d(({nRow}) - 1) \
     )}
 

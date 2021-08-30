@@ -25,4 +25,5 @@ LOOP_START:
     {gridClick(0.57, 0.68, 0.57, 0.42, 1, 20, i)}
     {relclick(0.77, 0.47)}
     i = i + 1
+
     gotoif(LOOP_START, i < 20)

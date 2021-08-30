@@ -20,4 +20,5 @@ START:
     x = x + 1
     gotoif(START, x < 12)
 
+    gu("current_mine_tab")
     show("mine", false)

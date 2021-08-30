@@ -31,3 +31,5 @@ DIG_START:
     newlayer()
     i_layer = i_layer + 1
     gotoif(LAYER_START, i_layer < 3)
+
+    gu("dig_index")

@@ -32,3 +32,6 @@ loopStart:
 
     wait(3.0)
     stop("Cursor/Slow Click 64")
+
+    gu("_1")
+    gu("_2")

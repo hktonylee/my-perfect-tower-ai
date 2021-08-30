@@ -7,4 +7,6 @@
 ;;; Actions
     show("laboratory", true)
 
+    executesync("Lab/_Nature")
+
     show("laboratory", false)

@@ -6,6 +6,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 WinGet, currentWin, ID, A
 WinActivate, The Perfect Tower
 
+CoordMode, Mouse, Screen
+MouseGetPos, oldMouseX, oldMouseY
+
 CoordMode, Mouse, Client
 MouseMove, 0, 0
 
@@ -19,20 +22,21 @@ WinGetPos, , , windowWidth, windowHeight, The Perfect Tower
 windowWidth := windowWidth - 2 * clientOffsetX
 windowHeight := windowHeight - clientOffsetX - clientOffsetY
 
+RelMove(x, y) {
+    global windowWidth
+    global windowHeight
+    MouseMove, x * windowWidth, (1 - y) * windowHeight
+}
+
 RelClick(x, y) {
     global windowWidth
     global windowHeight
-    
-    OutputDebug, % x * windowWidth
-    OutputDebug, % (1 - y) * windowHeight
     MouseClick, Left, x * windowWidth, (1 - y) * windowHeight
 }
 
 RelRightClick(x, y) {
     global windowWidth
     global windowHeight
-
-    ; WinGetPos, , , windowWidth, windowHeight, The Perfect Tower
     MouseClick, Right, x * windowWidth, (1 - y) * windowHeight
 }
 
@@ -50,7 +54,7 @@ RelClick(0.50, 0.50) ; Script editor
 Sleep, 200
 
 Send ^v ; Paste the script
-Sleep, 300
+Sleep, 500
 
 RelClick(0.50, 0.25) ; Import
 Sleep, 100
@@ -58,7 +62,17 @@ Sleep, 100
 RelRightClick(0.83, 0.71) ; First row
 Send {F4}
 Sleep, 50
+
 Send {F4}
+Sleep, 1000
+
+RelClick(0.98, 0.96) ; Click the exit button
+Send {F4}
+Sleep, 50
+Send {F4}
+
+CoordMode, Mouse, Screen
+MouseMove, oldMouseX, oldMouseY
 
 SoundBeep
 SoundBeep

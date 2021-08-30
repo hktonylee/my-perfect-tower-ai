@@ -1,0 +1,34 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:local int i
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+; key.8()
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    {requireMinRestSecond1("Nature", 300.)}
+    {requireMinRestSecond2("Nature")}
+
+    ; Try to harvest all the plants first
+    i = 0
+HARVEST_START:
+    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
+    i = i + 1
+    gotoif(HARVEST_START, i < 5 * 5)
+
+    ; Try to plant stuff
+    {relscrollbar(0.48, 0.50, -1.0, 1.0)}
+    {relclick(0.47, 0.39)}
+    ; Try to harvest all the plants first
+    i = 0
+PLANT_START:
+    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
+    i = i + 1
+    gotoif(PLANT_START, i < 5 * 5)

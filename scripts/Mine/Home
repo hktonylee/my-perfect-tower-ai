@@ -1,3 +1,4 @@
+:import [Library]
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
@@ -11,11 +12,12 @@
 
     x = 0
 START:
-    click(vec(width.d() * 0.02, height.d() * 0.65))
+    {relclick(0.04, 0.68)} ; Add fuel to the digger
+    {relclick(0.35, 0.68)} ; Start/stop the digger, 50% start chance is bettter than 0%
+
     executesync("Mine/_Mine 1 Tab")
     
     x = x + 1
     gotoif(START, x < 12)
 
-    click(vec(width.d() * 0.98, height.d() * 0.95))
     show("mine", false)

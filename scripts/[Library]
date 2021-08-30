@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 23
+#kTotalAICount 24
 
 
 ;;; ---------------------------------------------------------------------------
@@ -15,10 +15,19 @@
 #relclick(x, y) click(vec(width.d() * ({x}), height.d() * ({y})))
 ; #relclick(x, y) click({relvec(x, y)})
 
+; Click at relative location of a grid
+; (x1, y1) must be top-left
+; (x2, y2) must be bottom-right
+#gridClick(x1, y1, x2, y2, nCol, nRow, i) \
+    {relclick( \
+        ({x1}) + (({x2}) - ({x1})) * i2d(({i}) % ({nCol})) / i2d(({nCol}) - 1), \
+        ({y1}) - (({y1}) - ({y2})) * i2d(({i}) / ({nCol})) / i2d(({nRow}) - 1) \
+    )}
+
 ; Scroll the scrollbar at relative location to dx and dy
 #relscrollbar(x, y, dx, dy) scrollbar(vec(width.d() * ({x}), height.d() * ({y})), ({dx}), ({dy}))
 
-; Clamp Positive
+; Clamp positive
 #positive(x) double.max(0.0, ({x}))
 
 ; Extended min
@@ -27,3 +36,18 @@
 #double.min.4(a, b, c, d) double.min(({a}), double.min(({b}), double.min(({c}), ({d}))))
 #double.min.5(a, b, c, d, e) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), ({e}))))))
 #double.min.6(a, b, c, d, e, f) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), double.min(({e}), ({f}))))))
+
+#_lastTime(name) ("last_time[" . ({name}) . "]")
+
+; Guard to prevent too frequent executions
+#requireMinRestSecond1(name, second) \
+    gotoif(\
+        999, \
+        (gdg({_lastTime({name})}) > 0.) \
+        && ( \
+            gdg("time") - gdg({_lastTime({name})}) < ({second}) \
+        ) \
+    )
+
+#requireMinRestSecond2(name) \
+    gds({_lastTime({name})}, round(gdg("time")))

@@ -22,6 +22,7 @@ FILES += 'Mine/_Dig 4'
 FILES += 'Trade/Home'
 
 FILES += 'Lab/Home'
+FILES += 'Lab/_Nature'
 
 FILES += 'Cursor/Click 8'
 FILES += 'Cursor/Click Click'

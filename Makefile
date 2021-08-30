@@ -48,6 +48,6 @@ build: update-files-count
 	@ cd scripts && ../lib/perfect-tower-ai-compiler $(FILES)
 
 update-files-count:
-	@ ./update-files-count $(FILES)
+	@ ./bin/update-files-count $(FILES)
 
 .PHONY: build update-files-count

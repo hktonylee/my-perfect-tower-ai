@@ -1,0 +1,50 @@
+wakeup()                |!Enable the AI|Cursor/Position|Timer/Main|
+key.0()                 |
+key.1()                 |
+key.2()                 |
+key.3()                 |Factory/_Make 1 Chip T2|
+key.4()                 |
+key.5()                 |Factory/_Make Stuff|
+key.6()                 |
+key.7()                 |
+key.8()                 |Lab/_Nature|
+key.9()                 |
+key.a()                 |Main|
+key.b()                 |
+key.c()                 |
+key.d()                 |!Delete the AI|
+key.e()                 |Lab/_Electric|
+key.f()                 |
+key.g()                 |
+key.h()                 |Keyboard/Left|
+key.i()                 |
+key.j()                 |Keyboard/Down|
+key.k()                 |Keyboard/Up|
+key.l()                 |Keyboard/Right|
+key.m()                 |Mine/_Mine 1 Tab|
+key.n()                 |Tower/Home|
+key.o()                 |
+key.p()                 |Cursor/Click Click|
+key.q()                 |
+key.r()                 |
+key.s()                 |
+key.t()                 |
+key.u()                 |
+key.v()                 |
+key.w()                 |
+key.x()                 |Keyboard/Exit|
+key.y()                 |
+key.z()                 |Keyboard/Enter|
+open.arcade()           |
+open.constructionFirm() |
+open.factory()          |
+open.headquarters()     |
+open.laboratory()       |
+open.mine()             |
+open.museum()           |
+open.powerplant()       |
+open.shipyard()         |
+open.statueofcubos()    |
+open.tradingpost()      |
+open.workshop()         |
+game.newround()         |

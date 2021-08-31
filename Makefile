@@ -50,4 +50,7 @@ build: update-files-count
 update-files-count:
 	@ ./bin/update-files-count $(FILES)
 
-.PHONY: build update-files-count
+replace-impulse-map:
+	@ ./bin/replace-impulse-map ./ImpulseMap $(FILES)
+
+.PHONY: build update-files-count replace-impulse-map

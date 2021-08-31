@@ -40,6 +40,7 @@
 #positive(x) double.max(0.0, ({x}))
 
 ; Extended min
+#double.min.1(a) ({a})
 #double.min.2(a, b) double.min(({a}), ({b}))
 #double.min.3(a, b, c) double.min(({a}), double.min(({b}), ({c})))
 #double.min.4(a, b, c, d) double.min(({a}), double.min(({b}), double.min(({c}), ({d}))))

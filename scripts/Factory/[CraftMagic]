@@ -1,3 +1,11 @@
+
+#craftMagic.1(to, toTier, c1) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.1( \
+            ({c1})) \
+        )}) \
+    )
+
 #craftMagic.2(to, toTier, c1, c2) \
     craft(({to}), ({toTier}), \
         floor({double.min.2( \
@@ -31,6 +39,14 @@
         floor({double.min.6( \
             ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}) \
         )}) \
+    )
+
+#produceMagic.1(to, toTier, machine, c1) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.1( \
+            ({c1}) \
+        )}), \
+        ({machine}) \
     )
 
 #produceMagic.2(to, toTier, machine, c1, c2) \

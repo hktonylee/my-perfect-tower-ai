@@ -28,9 +28,9 @@ loopStart:
     execute("Cursor/Slow Click 64")
 
     i = i + 1
-    gotoif(loopStart, i < 16)
+    gotoif(loopStart, i < 17)
 
-    wait(3.0)
+    wait(1.5)
     stop("Cursor/Slow Click 64")
 
     gu("_1")

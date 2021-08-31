@@ -31,7 +31,7 @@
 
     gds({lastTime("Tower")}, round(gdg("time")))
 
-    wait(120.0)
+    wait(60.0)
     {relclick(0.5, 0.2)} ; "Stop" button
     
     show("towertesting", false)

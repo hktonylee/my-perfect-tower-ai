@@ -6,5 +6,6 @@
 ;;; Actions
     show("factory", true)
     executesync("Factory/_Make Stuff")
+    executesync("Factory/_Make 1 Chip T2")
     executesync("Factory/_Buy Them All")
     show("factory", false)

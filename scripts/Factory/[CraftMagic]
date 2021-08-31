@@ -89,8 +89,48 @@
         ({machine}) \
     )
 
+#item(name, tier) count(({name}), ({tier}))
+
+#itemWithRatio(name, tier, ratio) (count(({name}), ({tier})) / ({ratio}))
+
 #itemLimitMax(to, toTier, maxToCount, toRatio) \
-    {positive(({maxToCount}) - count(({to}), ({toTier})))} / ({toRatio})
+    {itemLimitMax.1({item(({to}), ({toTier}))}, ({maxToCount}), ({toRatio}))}
+
+#itemLimitMax.1(item1, maxToCount, toRatio) \
+    {positive(({maxToCount}) \
+        - ({item1}) \
+    )} / ({toRatio})
+
+#itemLimitMax.2(item1, item2, maxToCount, toRatio) \
+    {positive(({maxToCount}) \
+        - ({item1}) \
+        - ({item2}) \
+    )} / ({toRatio})
+
+#itemLimitMax.3(item1, item2, item3, maxToCount, toRatio) \
+    {positive(({maxToCount}) \
+        - ({item1}) \
+        - ({item2}) \
+        - ({item3}) \
+    )} / ({toRatio})
 
 #itemLimitMin(from, fromTier, minFromCount, fromRatio) \
-    {positive(count(({from}), ({fromTier})) - ({minFromCount}))} / ({fromRatio})
+    {itemLimitMin.1({item(({from}), ({fromTier}))}, ({minFromCount}), ({fromRatio}))}
+
+#itemLimitMin.1(item1, minFromCount, fromRatio) \
+    {positive(0. - ({minFromCount}) \
+        + ({item1}) \
+    )} / ({fromRatio})
+
+#itemLimitMin.2(item1, item2, minFromCount, fromRatio) \
+    {positive(0. - ({minFromCount}) \
+        + ({item1}) \
+        + ({item2}) \
+    )} / ({fromRatio})
+
+#itemLimitMin.3(item1, item2, item3, minFromCount, fromRatio) \
+    {positive(0. - ({minFromCount}) \
+        + ({item1}) \
+        + ({item2}) \
+        + ({item3}) \
+    )} / ({fromRatio})

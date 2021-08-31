@@ -44,7 +44,7 @@
 #double.min.2(a, b) double.min(({a}), ({b}))
 #double.min.3(a, b, c) double.min(({a}), double.min(({b}), ({c})))
 #double.min.4(a, b, c, d) double.min(({a}), double.min(({b}), double.min(({c}), ({d}))))
-#double.min.5(a, b, c, d, e) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), ({e}))))))
+#double.min.5(a, b, c, d, e) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), ({e})))))
 #double.min.6(a, b, c, d, e, f) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), double.min(({e}), ({f}))))))
 
 #lastTime(name) ("last_time[" . ({name}) . "]")

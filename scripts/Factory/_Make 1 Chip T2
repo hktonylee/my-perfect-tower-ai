@@ -16,20 +16,92 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#minPlateCount 1000.
-#minDustCount 1000.
-#maxDensePlateCount 100.
-
-#tier _1
+#targetChipCount 20.
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 
+    {craftMagic.2( \
+        "chip", 2, \
+        {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
+        {itemLimitMin("chip", 1, 1000., 4.)} \
+    )}
 
-    {produceMagic.2( \
+    gotoif(SKIP_REFINERY, active("refinery"))
+
+    ; Make circuit plate T4
+    {produceMagic.5( \
         "plate", 4, "refinery", \
-        {itemLimitMax("plate.circuit", 4, 100., 1.)}, \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", 2, 1.)}, \
+            {itemWithRatio("plate.circuit", 4, 2.)}, \
+            {targetChipCount}, 0.5 \
+        )}, \
+        {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
+        {itemLimitMin("chip", 1, 1000., 4.)}, \
+        {itemLimitMax("plate.circuit", 4, 2. * {targetChipCount}, 1.)}, \
         {itemLimitMin("plate", 4, 50., 1.)} \
     )}
 
+    ; Make circuit plate T3
+    {produceMagic.5( \
+        "plate", 3, "refinery", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", 2, 1.)}, \
+            {itemWithRatio("plate.circuit", 3, 4.)}, \
+            {targetChipCount}, 0.25 \
+        )}, \
+        {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
+        {itemLimitMin("chip", 1, 1000., 4.)}, \
+        {itemLimitMax("plate.circuit", 3, 4. * {targetChipCount}, 1.)}, \
+        {itemLimitMin("plate", 3, 50., 1.)} \
+    )}
+
+    ; Make cable T4
+    {produceMagic.2( \
+        "ingot", 4, "refinery", \
+        {itemLimitMax("cable", 4, 50., 2.)}, \
+        {itemLimitMin("ingot", 4, 100., 1.)} \
+    )}
+
+    ; Make cable T3
+    {produceMagic.2( \
+        "ingot", 3, "refinery", \
+        {itemLimitMax("cable", 3, 50., 2.)}, \
+        {itemLimitMin("ingot", 3, 100., 1.)} \
+    )}
+
+SKIP_REFINERY:
+
+    gotoif(SKIP_ASSEMBLER, active("assembler"))
+
+    ; Make wire T4
+    {produceMagic.5( \
+        "cable", 4, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", 2, 1.)}, \
+            {itemWithRatio("cable", 4, 4.)}, \
+            {targetChipCount}, 0.25 \
+        )}, \
+        {itemLimitMax("chip", 2, {targetChipCount}, 0.25)}, \
+        {itemLimitMin("chip", 1, 1000., 1.)}, \
+        {itemLimitMax("wire", 4, 4. * {targetChipCount}, 1.)}, \
+        {itemLimitMin("cable", 4, 10., 1.)} \
+    )}
+
+    ; Make wire T3
+    {produceMagic.5( \
+        "cable", 3, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", 2, 1.)}, \
+            {itemWithRatio("cable", 3, 2.)}, \
+            {targetChipCount}, 0.5 \
+        )}, \
+        {itemLimitMax("chip", 2, {targetChipCount}, 0.5)}, \
+        {itemLimitMin("chip", 1, 1000., 2.)}, \
+        {itemLimitMax("wire", 3, 2. * {targetChipCount}, 1.)}, \
+        {itemLimitMin("cable", 3, 10., 1.)} \
+    )}
+
+SKIP_ASSEMBLER:
 

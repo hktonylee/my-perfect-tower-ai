@@ -15,6 +15,8 @@ isopen("factory")
 #minLowerTierCount 1000.0
 #minHigherTierCount 200.0
 
+#minIngotCount 3000.0
+
 #maxMixerCount 1000.0
 
 ; Tier1: 1440
@@ -55,9 +57,9 @@ SKIP_MIXER:
     )
 
     ; Make dust from ingot
-    {produceMagic.3( \
+    {produceMagic.2( \
         "ingot", fromDustTier, "crusher", \
-        3000, \
+        {minIngotCount}, \
         {itemLimitMin("ingot", fromDustTier, 3000., 1.)} \
     )}
 

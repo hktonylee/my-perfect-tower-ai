@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+START_REGEX=';;; Impulse'
+END_REGEX='^$'
+
+impulse_map="$1"
+shift
+
+tmp_file="/tmp/tmp_replace_impulse_map"
+
+for file in "$@"; do
+    if grep "$START_REGEX" "$file" >/dev/null; then
+        all_impulses=$( \
+            grep -F "|$file|" "$impulse_map" \
+            | awk '{print $1}'
+        )
+
+        awk -v impulses="$all_impulses" "
+            /$START_REGEX/ { in_impulse_map = 1 }
+            /$END_REGEX/ { in_impulse_map = 0 }
+            {
+                if (in_impulse_map == 1) {
+                    print
+                    in_impulse_map = 2
+                } else if (in_impulse_map == 2) {
+                    print impulses
+                    in_impulse_map = 3
+                } else if (in_impulse_map == 0) {
+                    print
+                }
+            }
+        " "$file" > "$tmp_file"
+        mv "$tmp_file" "$file"
+    fi
+done

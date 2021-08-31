@@ -6,4 +6,4 @@ key.p()
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     click(position())
-    ; execute("Cursor/Click Click")
+    execute("Cursor/Click Click")

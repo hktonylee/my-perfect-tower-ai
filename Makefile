@@ -44,13 +44,13 @@ FILES += 'Timer/_Run 1000'
 
 FILES += '!Delete the AI'
 
-build: update-files-count
+build: update-files-count replace-impulse-map
 	@ cd scripts && ../lib/perfect-tower-ai-compiler $(FILES)
 
 update-files-count:
 	@ ./bin/update-files-count $(FILES)
 
 replace-impulse-map:
-	@ ./bin/replace-impulse-map ./ImpulseMap $(FILES)
+	@ cd scripts && ../bin/replace-impulse-map ../ImpulseMap $(FILES)
 
 .PHONY: build update-files-count replace-impulse-map

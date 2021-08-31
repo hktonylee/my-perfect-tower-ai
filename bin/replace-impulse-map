@@ -23,13 +23,13 @@ for file in "$@"; do
                     print
                     in_impulse_map = 2
                 } else if (in_impulse_map == 2) {
-                    print impulses
+                    if (length(impulses) > 0) { print impulses }
                     in_impulse_map = 3
                 } else if (in_impulse_map == 0) {
                     print
                 }
             }
         " "$file" > "$tmp_file"
-        mv "$tmp_file" "$file"
+        [[ $? -eq 0 ]] && mv "$tmp_file" "$file"
     fi
 done

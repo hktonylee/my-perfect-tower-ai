@@ -15,8 +15,8 @@ key.c()                 |
 key.d()                 |!Delete the AI|
 key.e()                 |Lab/_Electric|
 key.f()                 |
-key.g()                 |
-key.h()                 |Keyboard/Left|
+key.g()                 |Keyboard/Left|
+key.h()                 |
 key.i()                 |
 key.j()                 |Keyboard/Down|
 key.k()                 |Keyboard/Up|

@@ -14,6 +14,9 @@
 #kTickCount "<size=0>_tick_count"
 #kTickPerSecond "</size>tick_per_second"
 
+#kRegionCount 13
+#kMaxRegionDifficulty (6 * {kRegionCount})
+
 ;;; ---------------------------------------------------------------------------
 ;;; Utilities
 

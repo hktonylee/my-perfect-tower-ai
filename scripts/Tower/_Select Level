@@ -2,8 +2,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int region ; start with 0
-:global int difficulty ; start with 0
+:global int region_difficulty ; start with 0, 0-5: first region, 6-11: second-region
 :global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
 :local int i
 :local int j
@@ -22,12 +21,12 @@ PREVIOUS_BUTTON_START:
     ; {relclick(0.82, 0.81)} ; "Idle" button
     {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
 
-    gotoif(SELECT_DIFFICULTY, region == 0)
+    gotoif(SELECT_DIFFICULTY, (region_difficulty / 6) == 0)
 NEXT_BUTTON_START:
     {relclick(0.37, 0.51)} ; "Next" button
     j = j + 1
-    gotoif(NEXT_BUTTON_START, j < region)
+    gotoif(NEXT_BUTTON_START, j < region_difficulty / 6)
 
 SELECT_DIFFICULTY:
-    {relclick(0.5, 0.66 - 0.07 * i2d(difficulty))} ; Difficulty button
+    {relclick(0.5, 0.66 - 0.07 * i2d(region_difficulty % 6))} ; Difficulty button
 

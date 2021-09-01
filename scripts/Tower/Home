@@ -2,8 +2,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int region ; start with 0
-:global int difficulty ; start with 0
+:global int region_difficulty ; start with 0, 0-5: first region, 6-11: second-region
 :global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
 :local int i
 
@@ -22,8 +21,7 @@ key.n()
 ;;; Actions
     show("towertesting", true)
 
-    region = {kIdleRegion}
-    difficulty = {kIdleDifficulty}
+    region_difficulty = 6 * {kIdleRegion} + {kIdleDifficulty}
     tower_testing_type = 3 ; Idle
     executesync("Tower/_Select Level")
     gu("region")

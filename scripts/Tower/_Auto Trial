@@ -2,8 +2,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int region ; start with 0
-:global int difficulty ; start with 0
+:global int region_difficulty ; start with 0, 0-5: first region, 6-11: second-region
 :global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
 :global double time
 :local double last_time
@@ -18,48 +17,44 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#StartRegion 0
-#StartDifficulty 1
+#StartRegion 1
+#StartDifficulty 2
 
 #TowerHealth health(false)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 
-    region = {StartRegion}
+    region_difficulty = 6 * {StartRegion} + {StartDifficulty}
     tower_testing_type = 0; Normal
 
-REGION_LOOP:
-    difficulty = ternary.int(region == {StartRegion}, {StartDifficulty}, 0)
-
-DIFFICULTY_LOOP:
+REGION_DIFFICULTY_LOOP:
     executesync("Tower/_Select Level")
 
     {relclick(0.15, 0.07)} ; "Launch" button
     
     last_time = time
-    waituntil({TowerHealth} > 0. || (time - last_time) > 3.) ; wait max 3 seconds
-    gotoif(NEXT_DIFFICULTY, {TowerHealth} == 0.)
+    waituntil({TowerHealth} > 0. || (time - last_time) > 4.) ; wait max 4 seconds
+    gotoif(NEXT_DIFFICULTY, {TowerHealth} == 0.) ; Probably the level is not yet opened
 
     {relclick(0.30, 0.51)} ; Close the Upgrade menu
-    wait(0.5)
+    wait(1.0)
     {relclick(0.02, 0.51)} ; Open the Upgrade menu
 
 KEEP_CLICKING_TO_TOWN:
     {relclick(0.72, 0.33)} ; Click the "To Town" button
-    gotoif(KEEP_CLICKING_TO_TOWN, {TowerHealth} > 0.)
+    show("towertesting", true)
+    gotoif(KEEP_CLICKING_TO_TOWN, (isopen("towertesting") == false)) ; no need to wait for health
+
+    wait(1.0)
 
     ; {relclick(0.03, 0.04)} ; Click the "Exit" button
     ; {relclick(0.03, 0.04)} ; Click the "Exit" button
     ; {relclick(0.27, 0.32)} ; Click the "To Town" button
 
-    show("towertesting", true)
-
 NEXT_DIFFICULTY:
-    difficulty = difficulty + 1
-    gotoif(DIFFICULTY_LOOP, difficulty < 6)
+    region_difficulty = region_difficulty + 1
+    gotoif(REGION_DIFFICULTY_LOOP, region_difficulty < {kMaxRegionDifficulty})
 
-    ;region = region + 1
-    ;gotoif(REGION_LOOP, region < 12)
 
 

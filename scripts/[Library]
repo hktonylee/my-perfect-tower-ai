@@ -44,12 +44,15 @@
 
 ; Extended min
 #double.min.1(a) ({a})
-#double.min.2(a, b) double.min(({a}), ({b}))
-#double.min.3(a, b, c) double.min(({a}), double.min(({b}), ({c})))
-#double.min.4(a, b, c, d) double.min(({a}), double.min(({b}), double.min(({c}), ({d}))))
-#double.min.5(a, b, c, d, e) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), ({e})))))
-#double.min.6(a, b, c, d, e, f) double.min(({a}), double.min(({b}), double.min(({c}), double.min(({d}), double.min(({e}), ({f}))))))
-
+#double.min.2(n1, n2) double.min(({n1}), {double.min.1(({n2}))})
+#double.min.3(n1, n2, n3) double.min(({n1}), {double.min.2(({n2}), ({n3}))})
+#double.min.4(n1, n2, n3, n4) double.min(({n1}), {double.min.3(({n2}), ({n3}), ({n4}))})
+#double.min.5(n1, n2, n3, n4, n5) double.min(({n1}), {double.min.4(({n2}), ({n3}), ({n4}), ({n5}))})
+#double.min.6(n1, n2, n3, n4, n5, n6) double.min(({n1}), {double.min.5(({n2}), ({n3}), ({n4}), ({n5}), ({n6}))})
+#double.min.7(n1, n2, n3, n4, n5, n6, n7) double.min(({n1}), {double.min.6(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}))})
+#double.min.8(n1, n2, n3, n4, n5, n6, n7, n8) double.min(({n1}), {double.min.7(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}))})
+#double.min.9(n1, n2, n3, n4, n5, n6, n7, n8, n9) double.min(({n1}), {double.min.8(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}), ({n9}))})
+#double.min.10(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10) double.min(({n1}), {double.min.9(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}), ({n9}), ({n10}))})
 #lastTime(name) ("last_time[" . ({name}) . "]")
 
 ; Guard to prevent too frequent executions

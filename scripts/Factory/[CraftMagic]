@@ -41,6 +41,20 @@
         )}) \
     )
 
+#craftMagic.7(to, toTier, c1, c2, c3, c4, c5, c6, c7) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.7( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}), ({c7}) \
+        )}) \
+    )
+
+#craftMagic.8(to, toTier, c1, c2, c3, c4, c5, c6, c7, c8) \
+    craft(({to}), ({toTier}), \
+        floor({double.min.8( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}), ({c7}), ({c8}) \
+        )}) \
+    )
+
 #produceMagic.1(to, toTier, machine, c1) \
     produce(({to}), ({toTier}), \
         floor({double.min.1( \
@@ -85,6 +99,22 @@
     produce(({to}), ({toTier}), \
         floor({double.min.6( \
             ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.7(to, toTier, machine, c1, c2, c3, c4, c5, c6, c7) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.7( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}) \
+        )}), \
+        ({machine}) \
+    )
+
+#produceMagic.8(to, toTier, machine, c1, c2, c3, c4, c5, c6, c7, c8) \
+    produce(({to}), ({toTier}), \
+        floor({double.min.8( \
+            ({c1}), ({c2}), ({c3}), ({c4}), ({c5}), ({c6}), ({c7}), ({c8}) \
         )}), \
         ({machine}) \
     )

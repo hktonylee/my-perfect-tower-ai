@@ -21,10 +21,15 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 
-    {craftMagic.2( \
+    {craftMagic.7( \
         "chip", 2, \
         {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
-        {itemLimitMin("chip", 1, 1000., 4.)} \
+        {itemLimitMin("chip", 1, 1000., 4.)}, \
+        {itemWithRatio("plate.circuit", 4, 2.)}, \
+        {itemWithRatio("plate.circuit", 3, 4.)}, \
+        {itemWithRatio("circuit", 4, 4.)}, \
+        {itemWithRatio("circuit", 3, 2.)}, \
+        {itemWithRatio("chip", 1, 4.)} \
     )}
 
     gotoif(SKIP_REFINERY, active("refinery"))
@@ -75,31 +80,27 @@ SKIP_REFINERY:
 
     gotoif(SKIP_ASSEMBLER, active("assembler"))
 
-    ; Make wire T4
-    {produceMagic.5( \
+    ; Make circuit wire T4
+    {produceMagic.3( \
         "cable", 4, "assembler", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
-            {itemWithRatio("cable", 4, 4.)}, \
+            {itemWithRatio("circuit", 4, 4.)}, \
             {targetChipCount}, 0.25 \
         )}, \
         {itemLimitMax("chip", 2, {targetChipCount}, 0.25)}, \
-        {itemLimitMin("chip", 1, 1000., 1.)}, \
-        {itemLimitMax("wire", 4, 4. * {targetChipCount}, 1.)}, \
         {itemLimitMin("cable", 4, 10., 1.)} \
     )}
 
-    ; Make wire T3
-    {produceMagic.5( \
+    ; Make circuit wire T3
+    {produceMagic.3( \
         "cable", 3, "assembler", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
-            {itemWithRatio("cable", 3, 2.)}, \
+            {itemWithRatio("circuit", 3, 2.)}, \
             {targetChipCount}, 0.5 \
         )}, \
         {itemLimitMax("chip", 2, {targetChipCount}, 0.5)}, \
-        {itemLimitMin("chip", 1, 1000., 2.)}, \
-        {itemLimitMax("wire", 3, 2. * {targetChipCount}, 1.)}, \
         {itemLimitMin("cable", 3, 10., 1.)} \
     )}
 

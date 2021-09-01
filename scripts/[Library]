@@ -73,5 +73,194 @@
 #gotoIfKeyExit(label) gotoif(({label}), gsg("input") == KeyExit)
 #clearKey gss("input", "")
 
+
+;;; ---------------------------------------------------------------------------
+;;; Number parsing
+#switch.1(type, else, \
+    cond1, value1 \
+) ternary.{type}(({cond1}), {value1}, {else})
+
+#switch.2(type, else, \
+    cond1, value1, \
+    cond2, value2 \
+) {switch.1({type}, \
+    {switch.1({type}, ({else}), \
+        ({cond1}), ({value1}) \
+    )}, \
+    ({cond2}), ({value2}) \
+)}
+
+#switch.3(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3 \
+) {switch.1({type}, \
+    {switch.2({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}) \
+    )}, \
+    ({cond3}), ({value3}) \
+)}
+
+#switch.4(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4 \
+) {switch.1({type}, \
+    {switch.3({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}) \
+    )}, \
+    ({cond4}), ({value4}) \
+)}
+
+#switch.5(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5 \
+) {switch.1({type}, \
+    {switch.4({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}) \
+    )}, \
+    ({cond5}), ({value5}) \
+)}
+
+#switch.6(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6 \
+) {switch.1({type}, \
+    {switch.5({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}) \
+    )}, \
+    ({cond6}), ({value6}) \
+)}
+
+#switch.7(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7 \
+) {switch.1({type}, \
+    {switch.6({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}) \
+    )}, \
+    ({cond7}), ({value7}) \
+)}
+
+#switch.8(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8 \
+) {switch.1({type}, \
+    {switch.7({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}) \
+    )}, \
+    ({cond8}), ({value8}) \
+)}
+
+#switch.9(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8, \
+    cond9, value9 \
+) {switch.1({type}, \
+    {switch.8({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}), \
+        ({cond8}), ({value8}) \
+    )}, \
+    ({cond9}), ({value9}) \
+)}
+
+#switch.10(type, else, \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8, \
+    cond9, value9, \
+    cond10, value10 \
+) {switch.1({type}, \
+    {switch.9({type}, ({else}), \
+        ({cond1}), ({value1}), \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}), \
+        ({cond8}), ({value8}), \
+        ({cond9}), ({value9}) \
+    )}, \
+    ({cond10}), ({value10}) \
+)}
+
+#parseDigit(c) {switch.9(int, 0, \
+    ({c}) == "1", 1, \
+    ({c}) == "2", 2, \
+    ({c}) == "3", 3, \
+    ({c}) == "4", 4, \
+    ({c}) == "5", 5, \
+    ({c}) == "6", 6, \
+    ({c}) == "7", 7, \
+    ({c}) == "8", 8, \
+    ({c}) == "9", 9 \
+)}
+
+#parseDigits.1(d1) ({parseDigit({d1})})
+#parseDigits.2(d1, d2) (10 * {parseDigit({d1})} + {parseDigits.1(({d2}))})
+#parseDigits.3(d1, d2, d3) (100 * {parseDigit({d1})} + {parseDigits.2(({d2}), ({d3}))})
+#parseDigits.4(d1, d2, d3, d4) (1000 * {parseDigit({d1})} + {parseDigits.3(({d2}), ({d3}), ({d4}))})
+#parseDigits.5(d1, d2, d3, d4, d5) (10000 * {parseDigit({d1})} + {parseDigits.4(({d2}), ({d3}), ({d4}), ({d5}))})
+
+#parseNumber.3(n) {parseDigits.3(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1))}
+
 ;;; ---------------------------------------------------------------------------
 ;;; Tower Utilities

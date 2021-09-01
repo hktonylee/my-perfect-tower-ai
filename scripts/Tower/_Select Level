@@ -28,5 +28,6 @@ NEXT_BUTTON_START:
     gotoif(NEXT_BUTTON_START, j < region_difficulty / 6)
 
 SELECT_DIFFICULTY:
+    wait(0.05)
     {relclick(0.5, 0.66 - 0.07 * i2d(region_difficulty % 6))} ; Difficulty button
 

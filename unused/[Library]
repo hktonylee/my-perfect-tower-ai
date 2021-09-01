@@ -1,0 +1,9 @@
+; #parseNumber(n) {switch.5(int, 0, \
+;     len({n}) == 1, {parseDigits.1(sub(({n}), 0, 1))}, \
+;     len({n}) == 2, {parseDigits.2(sub(({n}), 0, 1), sub(({n}), 1, 1))}, \
+;     len({n}) == 3, {parseDigits.3(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1))}, \
+;     len({n}) == 4, {parseDigits.4(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1), sub(({n}), 3, 1))}, \
+;     len({n}) == 5, {parseDigits.5(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1), sub(({n}), 3, 1), sub(({n}), 4, 1))} \
+; )}
+
+#parseNumber.3(n) {parseDigits.3(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1))}

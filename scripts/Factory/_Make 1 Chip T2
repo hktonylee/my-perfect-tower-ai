@@ -35,30 +35,24 @@ isopen("factory")
     gotoif(SKIP_REFINERY, active("refinery"))
 
     ; Make circuit plate T4
-    {produceMagic.5( \
+    {produceMagic.2( \
         "plate", 4, "refinery", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
             {itemWithRatio("plate.circuit", 4, 2.)}, \
             {targetChipCount}, 0.5 \
         )}, \
-        {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
-        {itemLimitMin("chip", 1, 1000., 4.)}, \
-        {itemLimitMax("plate.circuit", 4, 2. * {targetChipCount}, 1.)}, \
         {itemLimitMin("plate", 4, 50., 1.)} \
     )}
 
     ; Make circuit plate T3
-    {produceMagic.5( \
+    {produceMagic.2( \
         "plate", 3, "refinery", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
             {itemWithRatio("plate.circuit", 3, 4.)}, \
             {targetChipCount}, 0.25 \
         )}, \
-        {itemLimitMax("chip", 2, {targetChipCount}, 1.)}, \
-        {itemLimitMin("chip", 1, 1000., 4.)}, \
-        {itemLimitMax("plate.circuit", 3, 4. * {targetChipCount}, 1.)}, \
         {itemLimitMin("plate", 3, 50., 1.)} \
     )}
 
@@ -81,26 +75,24 @@ SKIP_REFINERY:
     gotoif(SKIP_ASSEMBLER, active("assembler"))
 
     ; Make circuit wire T4
-    {produceMagic.3( \
+    {produceMagic.2( \
         "cable", 4, "assembler", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
             {itemWithRatio("circuit", 4, 4.)}, \
             {targetChipCount}, 0.25 \
         )}, \
-        {itemLimitMax("chip", 2, {targetChipCount}, 0.25)}, \
         {itemLimitMin("cable", 4, 10., 1.)} \
     )}
 
     ; Make circuit wire T3
-    {produceMagic.3( \
+    {produceMagic.2( \
         "cable", 3, "assembler", \
         {itemLimitMax.2( \
             {itemWithRatio("chip", 2, 1.)}, \
             {itemWithRatio("circuit", 3, 2.)}, \
             {targetChipCount}, 0.5 \
         )}, \
-        {itemLimitMax("chip", 2, {targetChipCount}, 0.5)}, \
         {itemLimitMin("cable", 3, 10., 1.)} \
     )}
 

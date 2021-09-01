@@ -28,27 +28,25 @@ isopen("laboratory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    {requireMinRestSecond1("Nature", 300.)}
+    {requireMinRestSecond1("Nature", 600.)}
     {requireMinRestSecond2("Nature")}
 
-    k = 0
-CLICK_START:
-    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, int.rnd(0, 24))}
-    k = k + 1
-    gotoif(CLICK_START, k < 1000)
+    ; Randomly change day/night
+    {relclick(0.82, {switch.1(double, 0.22, rnd(1, 3) == 1, 0.30)})}
 
+;     ; Randomly change to hot
+;     {relclick(0.67, 0.30)}
+;     i = rnd(1, 4)
+; LOOP_START_1:
+;     {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
+;     i = i + rnd(1, 4)
+;     gotoif(LOOP_START_1, i < 5 * 5)
+; 
+;     ; Randomly change to cold
+;     {relclick(0.71, 0.30)}
+;     i = rnd(1, 4)
+; LOOP_START_2:
+;     {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, i)}
+;     i = i + rnd(1, 4)
+;     gotoif(LOOP_START_2, i < 5 * 5)
 
-    ; Try to harvest all the plants first
-; HARVEST_START:
-;     
-;     i = i + 1
-;     gotoif(HARVEST_START, i < 5 * 5)
-
-    ; Try to plant stuff
-    {relscrollbar(0.48, 0.50, -1.0, 1.0)} ; scroll the seed list
-    {relclick(0.47, 0.39)} ; pick the 3rd one
-
-PLANT_START:
-    {gridClick(0.58, 0.71, 0.81, 0.39, 5, 5, j)}
-    j = j + 1
-    gotoif(PLANT_START, j < 5 * 5)

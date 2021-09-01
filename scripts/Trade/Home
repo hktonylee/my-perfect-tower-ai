@@ -9,7 +9,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    {requireMinRestSecond1("Trading", 600.)}
+    {requireMinRestSecond1("Trading", (15. * 60.))}  ; Need 15 mins to retry trading post
     {requireMinRestSecond2("Trading")}
 
     show("tradingpost", true)

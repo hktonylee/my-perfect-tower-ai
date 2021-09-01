@@ -17,12 +17,12 @@ isopen("factory")
 
 #minIngotCount 3000.0
 
-#maxMixerCount 1000.0
+#maxMixerCount 6000.0
 
 ; Tier1: 1440
 ; Tier2: 500
 ; Tier3: 290
-#maxCrusherCount(tier) (8000. / i2d({tier}))
+#maxCrusherCount(tier) (12000. / i2d({tier}))
 
 
 ;;; ---------------------------------------------------------------------------

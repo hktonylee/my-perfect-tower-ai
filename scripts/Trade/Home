@@ -2,26 +2,34 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declaration
+:local int ori_offset_count
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-
-;;; Impulse
-
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
+    {requireMinRestSecond1("Trading", 600.)}
+    {requireMinRestSecond2("Trading")}
+
     show("tradingpost", true)
 
     {relclick(0.21, 0.85)} ; Click the Trade Offers
     
     {relscrollbar(0.5, 0.5, -1., 1.)} ; Scroll to the top
+
+    ori_offset_count = offerCount()
+
+CLICK_START:
     {relclick(0.64, 0.83)} ; Click the first item
 
 CLICK_LOOP:
-    wait(0.1)
+    wait(0.2)
     {relclick(0.20, 0.50)} ; Click on "Trade" button
-    gotoif(CLICK_LOOP, offerCount() > 0)
+    gotoif( \
+        ternary.int(ori_offset_count == offerCount(), CLICK_START, CLICK_LOOP), \
+        offerCount() > 0 \
+    )
 
     ; Exit
     show("tradingpost", false)

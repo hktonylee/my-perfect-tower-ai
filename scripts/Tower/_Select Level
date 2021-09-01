@@ -22,10 +22,12 @@ PREVIOUS_BUTTON_START:
     ; {relclick(0.82, 0.81)} ; "Idle" button
     {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
 
+    gotoif(SELECT_DIFFICULTY, region == 0)
 NEXT_BUTTON_START:
     {relclick(0.37, 0.51)} ; "Next" button
     j = j + 1
     gotoif(NEXT_BUTTON_START, j < region)
 
+SELECT_DIFFICULTY:
     {relclick(0.5, 0.66 - 0.07 * i2d(difficulty))} ; Difficulty button
 

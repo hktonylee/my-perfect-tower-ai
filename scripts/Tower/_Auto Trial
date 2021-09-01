@@ -5,8 +5,8 @@
 :global int region ; start with 0
 :global int difficulty ; start with 0
 :global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
-:local int i
-:local int j
+:global double time
+:local double last_time
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -17,29 +17,49 @@ key.6()
 isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
+;;; Macros
+#StartRegion 0
+#StartDifficulty 1
+
+#TowerHealth health(false)
+
+;;; ---------------------------------------------------------------------------
 ;;; Actions
 
+    region = {StartRegion}
+    tower_testing_type = 0; Normal
+
 REGION_LOOP:
-    region = i
+    difficulty = ternary.int(region == {StartRegion}, {StartDifficulty}, 0)
 
 DIFFICULTY_LOOP:
-    difficulty = j
-    tower_testing_type = 1 ; Normal
     executesync("Tower/_Select Level")
 
-    waituntil(health.max() <= 0.)
+    {relclick(0.15, 0.07)} ; "Launch" button
+    
+    last_time = time
+    waituntil({TowerHealth} > 0. || (time - last_time) > 3.) ; wait max 3 seconds
+    gotoif(NEXT_DIFFICULTY, {TowerHealth} == 0.)
+
     {relclick(0.30, 0.51)} ; Close the Upgrade menu
+    wait(0.5)
     {relclick(0.02, 0.51)} ; Open the Upgrade menu
-    {relclick(0.03, 0.04)} ; Click the "Exit" button
-    {relclick(0.03, 0.04)} ; Click the "Exit" button
-    {relclick(0.27, 0.32)} ; Click the "To Town" button
-    wait(2.0)
+
+KEEP_CLICKING_TO_TOWN:
+    {relclick(0.72, 0.33)} ; Click the "To Town" button
+    gotoif(KEEP_CLICKING_TO_TOWN, {TowerHealth} > 0.)
+
+    ; {relclick(0.03, 0.04)} ; Click the "Exit" button
+    ; {relclick(0.03, 0.04)} ; Click the "Exit" button
+    ; {relclick(0.27, 0.32)} ; Click the "To Town" button
+
     show("towertesting", true)
 
-    j = j + 1
-    gotoif(DIFFICULTY_LOOP, j < 6)
+NEXT_DIFFICULTY:
+    difficulty = difficulty + 1
+    gotoif(DIFFICULTY_LOOP, difficulty < 6)
 
-    i = i + 1
-    gotoif(REGION_LOOP, i < 12)
+    ;region = region + 1
+    ;gotoif(REGION_LOOP, region < 12)
 
 

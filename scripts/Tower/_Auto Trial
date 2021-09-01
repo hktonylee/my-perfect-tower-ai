@@ -17,7 +17,7 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#StartRegion 7
+#StartRegion 2
 #StartDifficulty 2
 
 #TowerHealth health(false)
@@ -50,12 +50,11 @@ KEEP_CLICKING_TO_TOWN:
     wait(1.0)
 
     ; {relclick(0.03, 0.04)} ; Click the "Exit" button
-    ; {relclick(0.03, 0.04)} ; Click the "Exit" button
     ; {relclick(0.27, 0.32)} ; Click the "To Town" button
 
 NEXT_DIFFICULTY:
     region_difficulty = region_difficulty + 1
     gotoif(REGION_DIFFICULTY_LOOP, region_difficulty < {kMaxRegionDifficulty})
 
-
+    execute("Main") ; Prevent idle
 

@@ -2,13 +2,14 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int region
-:global int difficulty
+:global int region ; start with 0
+:global int difficulty ; start with 0
+:global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
 :local int i
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#kIdleRegion 7
+#kIdleRegion 6
 
 ; 0: Easy, 1: Medium, and so on
 #kIdleDifficulty 3
@@ -23,7 +24,8 @@ key.n()
 
     region = {kIdleRegion}
     difficulty = {kIdleDifficulty}
-    executesync("Tower/_Select Idle Level")
+    tower_testing_type = 3 ; Idle
+    executesync("Tower/_Select Level")
     gu("region")
     gu("difficulty")
 

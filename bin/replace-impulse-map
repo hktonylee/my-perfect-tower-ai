@@ -16,18 +16,19 @@ for file in "$@"; do
         )
 
         awk -v impulses="$all_impulses" "
-            /$START_REGEX/ { in_impulse_map = 1 }
-            /$END_REGEX/ { in_impulse_map = 0 }
+            /$START_REGEX/ { 
+                in_impulse_map = 1
+                print
+                print impulses
+                print
+            }
             {
-                if (in_impulse_map == 1) {
-                    print
-                    in_impulse_map = 2
-                } else if (in_impulse_map == 2) {
-                    if (length(impulses) > 0) { print impulses }
-                    in_impulse_map = 3
-                } else if (in_impulse_map == 0) {
+                if (in_impulse_map == 0) {
                     print
                 }
+            }
+            /$END_REGEX/ {
+                in_impulse_map = 0
             }
         " "$file" > "$tmp_file"
         [[ $? -eq 0 ]] && mv "$tmp_file" "$file"

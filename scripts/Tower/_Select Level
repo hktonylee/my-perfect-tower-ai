@@ -2,9 +2,11 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int region
-:global int difficulty
+:global int region ; start with 0
+:global int difficulty ; start with 0
+:global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
 :local int i
+:local int j
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
@@ -12,20 +14,18 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    i = 0
 PREVIOUS_BUTTON_START:
     {relclick(0.06, 0.51)} ; "Previous" button
     i = i + 1
     gotoif(PREVIOUS_BUTTON_START, i < 12)
 
-    ;
-    {relclick(0.82, 0.81)} ; "Idle" button
+    ; {relclick(0.82, 0.81)} ; "Idle" button
+    {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
 
-    i = 0
 NEXT_BUTTON_START:
     {relclick(0.37, 0.51)} ; "Next" button
-    i = i + 1
-    gotoif(NEXT_BUTTON_START, i < (region - 1))
+    j = j + 1
+    gotoif(NEXT_BUTTON_START, j < region)
 
     {relclick(0.5, 0.66 - 0.07 * i2d(difficulty))} ; Difficulty button
 

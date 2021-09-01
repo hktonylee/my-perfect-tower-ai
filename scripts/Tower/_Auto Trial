@@ -1,0 +1,45 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global int region ; start with 0
+:global int difficulty ; start with 0
+:global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
+:local int i
+:local int j
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.6()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("towertesting")
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+REGION_LOOP:
+    region = i
+
+DIFFICULTY_LOOP:
+    difficulty = j
+    tower_testing_type = 1 ; Normal
+    executesync("Tower/_Select Level")
+
+    waituntil(health.max() <= 0.)
+    {relclick(0.30, 0.51)} ; Close the Upgrade menu
+    {relclick(0.02, 0.51)} ; Open the Upgrade menu
+    {relclick(0.03, 0.04)} ; Click the "Exit" button
+    {relclick(0.03, 0.04)} ; Click the "Exit" button
+    {relclick(0.27, 0.32)} ; Click the "To Town" button
+    wait(2.0)
+    show("towertesting", true)
+
+    j = j + 1
+    gotoif(DIFFICULTY_LOOP, j < 6)
+
+    i = i + 1
+    gotoif(REGION_LOOP, i < 12)
+
+

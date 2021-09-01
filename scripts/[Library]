@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 27
+#kTotalAICount 28
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -69,3 +69,6 @@
 #gotoIfKeyEnter(label) gotoif(({label}), gsg("input") == KeyEnter)
 #gotoIfKeyExit(label) gotoif(({label}), gsg("input") == KeyExit)
 #clearKey gss("input", "")
+
+;;; ---------------------------------------------------------------------------
+;;; Tower Utilities

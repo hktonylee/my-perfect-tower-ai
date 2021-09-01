@@ -8,7 +8,8 @@ FILES += 'Cursor/Position'
 FILES += 'Main'
 
 FILES += 'Tower/Home'
-FILES += 'Tower/_Select Idle Level'
+FILES += 'Tower/_Select Level'
+FILES += 'Tower/_Auto Trial'
 
 FILES += 'Factory/Home'
 FILES += 'Factory/_Buy Them All'

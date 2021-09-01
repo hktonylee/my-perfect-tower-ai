@@ -4,13 +4,5 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
 key.a()
-
-;;; ---------------------------------------------------------------------------
-;;; Actions
-    executesync("Mine/Home")
-    executesync("Trade/Home")
-    executesync("Factory/Home")
-    executesync("Lab/Home")
-    executesync("Tower/Home")
-
+;;; Impulse
     goto(0)

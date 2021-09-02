@@ -13,19 +13,18 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-PREVIOUS_BUTTON_START:
-    {relclick(0.06, 0.51)} ; "Previous" button
-    i = i + 1
-    gotoif(PREVIOUS_BUTTON_START, i < 12)
+    {relclick(0.21, 0.68)} ; the big map
+    {relclick(0.18, 0.77)} ; the first region
 
-    ; {relclick(0.82, 0.81)} ; "Idle" button
-    {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
-
-    gotoif(SELECT_DIFFICULTY, (region_difficulty / 6) == 0)
+    gotoif(SELECT_TYPE, (region_difficulty / 6) == 0)
 NEXT_BUTTON_START:
     {relclick(0.37, 0.51)} ; "Next" button
     j = j + 1
     gotoif(NEXT_BUTTON_START, j < region_difficulty / 6)
+
+SELECT_TYPE:
+    ; {relclick(0.82, 0.81)} ; "Idle" button
+    {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
 
 SELECT_DIFFICULTY:
     wait(0.05)

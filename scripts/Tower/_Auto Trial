@@ -17,8 +17,8 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#StartRegion 2
-#StartDifficulty 2
+#StartRegion 4
+#StartDifficulty 3
 
 #TowerHealth health(false)
 

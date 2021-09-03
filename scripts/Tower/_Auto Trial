@@ -17,8 +17,9 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#StartRegion 4
-#StartDifficulty 3
+#StartRegion 0
+#StartDifficulty 0
+#TrialMode 1 ; Endless
 
 #TowerHealth health(false)
 
@@ -26,8 +27,7 @@ isopen("towertesting")
 ;;; Actions
 
     region_difficulty = 6 * {StartRegion} + {StartDifficulty}
-    ; tower_testing_type = 0; Normal
-    tower_testing_type = 1; Endless
+    tower_testing_type = {TrialMode};
 
 REGION_DIFFICULTY_LOOP:
     executesync("Tower/_Select Level")

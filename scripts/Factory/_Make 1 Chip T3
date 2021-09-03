@@ -1,0 +1,127 @@
+:import [Library]
+:import Factory/[CraftMagic]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global int _1 ; tier
+; :local int tier
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.3()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("factory")
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+#targetChipCount 80.
+
+#HigherChipTier 3
+#LowerChipTier 2
+
+#LowerTierChipRatio 8.
+#LowerTierChipMinCount 10.
+
+#HigherCircuitTier 6
+#LowerCircuitTier 5
+
+#HigherCircuitPlateRatio 2.
+#LowerCircuitPlateRatio 4.
+
+#HigherCircuitWireRatio 4.
+#LowerCircuitWireRatio 2.
+
+#HigherPlateMinCount 50.
+#LowerPlateMinCount 50.
+
+#HigherCableMaxCount 50.
+#LowerCableMaxCount 50.
+
+#HigherCableMinCount 10.
+#LowerCableMinCount 10.
+
+#HigherIngotMinCount 100.
+#LowerIngotMinCount 100.
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+    {craftMagic.7( \
+        "chip", {HigherChipTier}, \
+        {itemLimitMax("chip", {HigherChipTier}, {targetChipCount}, 1.)}, \
+        {itemLimitMin("chip", {LowerChipTier}, {LowerTierChipMinCount}, {LowerTierChipRatio})}, \
+        {itemWithRatio("plate.circuit", {HigherCircuitTier}, {HigherCircuitPlateRatio})}, \
+        {itemWithRatio("plate.circuit", {LowerCircuitTier}, {LowerCircuitPlateRatio})}, \
+        {itemWithRatio("circuit", {HigherCircuitTier}, {HigherCircuitWireRatio})}, \
+        {itemWithRatio("circuit", {LowerCircuitTier}, {LowerCircuitWireRatio})}, \
+        {itemWithRatio("chip", {LowerChipTier}, {LowerTierChipRatio})} \
+    )}
+
+    gotoif(SKIP_REFINERY, active("refinery"))
+
+    ; Make circuit plate (higher tier)
+    {produceMagic.2( \
+        "plate", {HigherCircuitTier}, "refinery", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier}, 1.)}, \
+            {itemWithRatio("plate.circuit", {HigherCircuitTier}, {HigherCircuitPlateRatio})}, \
+            {targetChipCount}, 1. / {HigherCircuitPlateRatio} \
+        )}, \
+        {itemLimitMin("plate", {HigherCircuitTier}, {HigherPlateMinCount}, 1.)} \
+    )}
+
+    ; Make circuit plate (lower tier)
+    {produceMagic.2( \
+        "plate", {LowerCircuitTier}, "refinery", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier}, 1.)}, \
+            {itemWithRatio("plate.circuit", {LowerCircuitTier}, {LowerCircuitPlateRatio})}, \
+            {targetChipCount}, 1. / {LowerCircuitPlateRatio} \
+        )}, \
+        {itemLimitMin("plate", {LowerCircuitTier}, {LowerPlateMinCount}, 1.)} \
+    )}
+
+    ; Make cable T4
+    {produceMagic.2( \
+        "ingot", {HigherCircuitTier}, "refinery", \
+        {itemLimitMax("cable", {HigherCircuitTier}, {HigherCableMaxCount}, 2.)}, \
+        {itemLimitMin("ingot", {HigherCircuitTier}, {HigherIngotMinCount}, 1.)} \
+    )}
+
+    ; Make cable T3
+    {produceMagic.2( \
+        "ingot", {LowerCircuitTier}, "refinery", \
+        {itemLimitMax("cable", {LowerCircuitTier}, {LowerCableMaxCount}, 2.)}, \
+        {itemLimitMin("ingot", {LowerCircuitTier}, {LowerIngotMinCount}, 1.)} \
+    )}
+
+SKIP_REFINERY:
+
+    gotoif(SKIP_ASSEMBLER, active("assembler"))
+
+    ; Make circuit wire T4
+    {produceMagic.2( \
+        "cable", {HigherCircuitTier}, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier}, 1.)}, \
+            {itemWithRatio("circuit", {HigherCircuitTier}, {HigherCircuitWireRatio})}, \
+            {targetChipCount}, 1. / {HigherCircuitWireRatio} \
+        )}, \
+        {itemLimitMin("cable", {HigherCircuitTier}, {HigherCableMinCount}, 1.)} \
+    )}
+
+    ; Make circuit wire T3
+    {produceMagic.2( \
+        "cable", {LowerCircuitTier}, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier}, 1.)}, \
+            {itemWithRatio("circuit", {LowerCircuitTier}, {LowerCircuitWireRatio})}, \
+            {targetChipCount}, 1. / {LowerCircuitWireRatio} \
+        )}, \
+        {itemLimitMin("cable", {LowerCircuitTier}, {LowerCableMinCount}, 1.)} \
+    )}
+
+SKIP_ASSEMBLER:
+

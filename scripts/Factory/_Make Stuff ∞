@@ -21,6 +21,7 @@ open.factory()
 ;;; Actions
     executesync("Factory/_Make Stuff")
     executesync("Factory/_Make 1 Chip T2")
+    executesync("Factory/_Make 1 Chip T3")
     
     gotoif(END, {WorkingCondition} == false)
     execute("Factory/_Make Stuff ∞")

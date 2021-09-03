@@ -33,6 +33,7 @@ FILES += 'Lab/_Electric'
 
 FILES += 'Cursor/Click 8'
 FILES += 'Cursor/Click Click'
+FILES += 'Cursor/Slow Click Click'
 FILES += 'Cursor/Slow Click 64'
 
 FILES += 'Timer/Main'

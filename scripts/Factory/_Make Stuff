@@ -13,7 +13,7 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#MakeMaxTier 8
+#MakeMaxTier 9
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
@@ -23,7 +23,6 @@ LOOP_START:
     _1 = i
 
     executesync("Factory/_Make 1 Plate")
-    ; executesync("Factory/_Make 1 Chip")
     executesync("Factory/_Make 1 Dust")
 
     ; Make from the highest tier, to prevent "starvation"

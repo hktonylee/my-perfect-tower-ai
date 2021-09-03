@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 
+# Sample super macro:
+# ;#python.start("../meta_scripts/generate_gotoSwitch.py")
+# ;#python.end()
+
 for file in "$@"; do
     tmp_file="$file.tmp"
 
     file_dir=$(dirname "$file")
     awk -v file_dir="$file_dir" '
-        /^##python.start\("/ {
+        /^;#python.start\("/ {
             python = 1;
-            match($0, /^##python.start\("([^"]+)"\)/, file)
+            match($0, /^;#python.start\("([^"]+)"\)/, file)
             print($0)
             path = (file_dir "/" file[1])
             system("python3 " path)
         }
-        /^##python\.end\(\)/ { python = 0 }
+        /^;#python\.end\(\)/ { python = 0 }
         {
             if (python == 1) {
                 python = 2

@@ -2,15 +2,14 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int slow_down_active
+:global int slow_down_working
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-game.newround()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
-health(false) > 0.0 && slow_down_active = 0
+health(false) > 0.0 && slow_down_working == 0
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
@@ -18,25 +17,31 @@ health(false) > 0.0 && slow_down_active = 0
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    slow_down_active = 1
+    slow_down_working = 1
 
 WHEN_FULL_SHIELD:
     gotoif(WHEN_FULL_SHIELD, shield(false) == shield.max())
 
     ; Need to slow down
-    {relclick(0.89, 0.97)}
+    {relclick(0.30, 0.66)} ; settings button
+    {relclick(0.45, 0.80)} ; gameplay button
+    {relclick(0.73, 0.63)} ; wave steaming button
+    {relclick(0.88, 0.61)} ; close button
 
 WHEN_MISSING_SHIELD:
-    gotoSwitch.2( \
-        RESET, hp(false) == 0.0, \
+    {gotoSwitch.2( \
+        RESET, health(false) == 0.0, \
         WHEN_MISSING_SHIELD, shield(false) < shield.max() \
-    )
+    )}
 
     ; Need to can be fast again
-    {relclick(0.89, 0.97)}
+    {relclick(0.30, 0.66)} ; settings button
+    {relclick(0.45, 0.80)} ; gameplay button
+    {relclick(0.73, 0.63)} ; wave steaming button
+    {relclick(0.88, 0.61)} ; close button
 
     goto(WHEN_FULL_SHIELD)
 
 RESET:
-    slow_down_active = 0
+    slow_down_working = 0
 END:

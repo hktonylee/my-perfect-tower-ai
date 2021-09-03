@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 29
+#kTotalAICount 30
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -77,23 +77,361 @@
 #clearKey gss("input", "")
 
 
+;#python.start("../meta_scripts/generate_gotoSwitch.py")
+
 #gotoSwitch.1( \
-    cond1, label1 \
+    label1, cond1 \
 ) gotoif({switch.1(int, ({label1}), \
     ({cond1}), ({label1}) \
 )}, \
     ({cond1}) \
 )
 
-##python.start("../meta_scripts/generate_gotoSwitch.py")
-test
-##python.end()
+
+#gotoSwitch.2( \
+    label1, cond1, \
+    label2, cond2 \
+) gotoif({switch.1(int, ({label1}), \
+    ({cond2}), ({label2}) \
+)}, \
+    ({cond1}) || ({cond2}) \
+)
+
+
+#gotoSwitch.3( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3 \
+) gotoif({switch.2(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) \
+)
+
+
+#gotoSwitch.4( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4 \
+) gotoif({switch.3(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) \
+)
+
+
+#gotoSwitch.5( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5 \
+) gotoif({switch.4(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) \
+)
+
+
+#gotoSwitch.6( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5, \
+    label6, cond6 \
+) gotoif({switch.5(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}), \
+    ({cond6}), ({label6}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) || ({cond6}) \
+)
+
+
+#gotoSwitch.7( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5, \
+    label6, cond6, \
+    label7, cond7 \
+) gotoif({switch.6(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}), \
+    ({cond6}), ({label6}), \
+    ({cond7}), ({label7}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) || ({cond6}) || ({cond7}) \
+)
+
+
+#gotoSwitch.8( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5, \
+    label6, cond6, \
+    label7, cond7, \
+    label8, cond8 \
+) gotoif({switch.7(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}), \
+    ({cond6}), ({label6}), \
+    ({cond7}), ({label7}), \
+    ({cond8}), ({label8}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) || ({cond6}) || ({cond7}) || ({cond8}) \
+)
+
+
+#gotoSwitch.9( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5, \
+    label6, cond6, \
+    label7, cond7, \
+    label8, cond8, \
+    label9, cond9 \
+) gotoif({switch.8(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}), \
+    ({cond6}), ({label6}), \
+    ({cond7}), ({label7}), \
+    ({cond8}), ({label8}), \
+    ({cond9}), ({label9}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) || ({cond6}) || ({cond7}) || ({cond8}) || ({cond9}) \
+)
+
+
+#gotoSwitch.10( \
+    label1, cond1, \
+    label2, cond2, \
+    label3, cond3, \
+    label4, cond4, \
+    label5, cond5, \
+    label6, cond6, \
+    label7, cond7, \
+    label8, cond8, \
+    label9, cond9, \
+    label10, cond10 \
+) gotoif({switch.9(int, ({label1}), \
+    ({cond2}), ({label2}), \
+    ({cond3}), ({label3}), \
+    ({cond4}), ({label4}), \
+    ({cond5}), ({label5}), \
+    ({cond6}), ({label6}), \
+    ({cond7}), ({label7}), \
+    ({cond8}), ({label8}), \
+    ({cond9}), ({label9}), \
+    ({cond10}), ({label10}) \
+)}, \
+    ({cond1}) || ({cond2}) || ({cond3}) || ({cond4}) || ({cond5}) || ({cond6}) || ({cond7}) || ({cond8}) || ({cond9}) || ({cond10}) \
+)
+
+;#python.end()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Number parsing
+
+;#python.start("../meta_scripts/generate_switch.py")
+
 #switch.1(type, else, \
     cond1, value1 \
 ) ternary.{type}(({cond1}), {value1}, {else})
+
+
+#switch.2(type, else, \
+    cond1, label1, \
+    cond2, label2 \
+) {switch.1({type}, \
+    {switch.1({type}, ({else}), \
+        ({cond2}), ({label2}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.3(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3 \
+) {switch.1({type}, \
+    {switch.2({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.4(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4 \
+) {switch.1({type}, \
+    {switch.3({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.5(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5 \
+) {switch.1({type}, \
+    {switch.4({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.6(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5, \
+    cond6, label6 \
+) {switch.1({type}, \
+    {switch.5({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}), \
+        ({cond6}), ({label6}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.7(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5, \
+    cond6, label6, \
+    cond7, label7 \
+) {switch.1({type}, \
+    {switch.6({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}), \
+        ({cond6}), ({label6}), \
+        ({cond7}), ({label7}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.8(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5, \
+    cond6, label6, \
+    cond7, label7, \
+    cond8, label8 \
+) {switch.1({type}, \
+    {switch.7({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}), \
+        ({cond6}), ({label6}), \
+        ({cond7}), ({label7}), \
+        ({cond8}), ({label8}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.9(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5, \
+    cond6, label6, \
+    cond7, label7, \
+    cond8, label8, \
+    cond9, label9 \
+) {switch.1({type}, \
+    {switch.8({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}), \
+        ({cond6}), ({label6}), \
+        ({cond7}), ({label7}), \
+        ({cond8}), ({label8}), \
+        ({cond9}), ({label9}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+
+#switch.10(type, else, \
+    cond1, label1, \
+    cond2, label2, \
+    cond3, label3, \
+    cond4, label4, \
+    cond5, label5, \
+    cond6, label6, \
+    cond7, label7, \
+    cond8, label8, \
+    cond9, label9, \
+    cond10, label10 \
+) {switch.1({type}, \
+    {switch.9({type}, ({else}), \
+        ({cond2}), ({label2}), \
+        ({cond3}), ({label3}), \
+        ({cond4}), ({label4}), \
+        ({cond5}), ({label5}), \
+        ({cond6}), ({label6}), \
+        ({cond7}), ({label7}), \
+        ({cond8}), ({label8}), \
+        ({cond9}), ({label9}), \
+        ({cond10}), ({label10}) \
+    )}, \
+    ({cond1}), ({value1}) \
+)}
+
+;#python.end()
 
 #parseDigit(c) {switch.9(int, 0, \
     ({c}) == "1", 1, \

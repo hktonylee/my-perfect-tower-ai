@@ -10,6 +10,7 @@ FILES += 'Master Mind'
 FILES += 'Tower/Home'
 FILES += 'Tower/_Select Level'
 FILES += 'Tower/_Auto Trial'
+FILES += 'Tower/_Slow Down'
 
 FILES += 'Factory/Home'
 FILES += 'Factory/_Buy Them All'
@@ -46,7 +47,7 @@ FILES += 'Timer/_Run 1000'
 
 FILES += '!Delete the AI'
 
-build: update-files-count replace-impulse-map
+build: update-files-count replace-impulse-map process-python-super-macro
 	@ cd scripts && ../lib/perfect-tower-ai-compiler $(FILES)
 
 update-files-count:
@@ -56,6 +57,6 @@ replace-impulse-map:
 	@ cd scripts && ../bin/replace-impulse-map ../ImpulseMap $(FILES)
 
 process-python-super-macro:
-	@ ./bin/process_python_super_macro $(FILES)
+	@ cd scripts && ../bin/process_python_super_macro $(FILES)
 
-.PHONY: build update-files-count replace-impulse-map
+.PHONY: build update-files-count replace-impulse-map process-python-super-macro

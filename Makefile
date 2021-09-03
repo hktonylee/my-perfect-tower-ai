@@ -55,4 +55,7 @@ update-files-count:
 replace-impulse-map:
 	@ cd scripts && ../bin/replace-impulse-map ../ImpulseMap $(FILES)
 
+process-python-super-macro:
+	@ ./bin/process_python_super_macro $(FILES)
+
 .PHONY: build update-files-count replace-impulse-map

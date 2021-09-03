@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+for file in "$@"; do
+    tmp_file="$file.tmp"
+
+    file_dir=$(dirname "$file")
+    awk -v file_dir="$file_dir" '
+        /^##python.start\("/ {
+            python = 1;
+            match($0, /^##python.start\("([^"]+)"\)/, file)
+            print($0)
+            path = (file_dir "/" file[1])
+            system("python3 " path)
+        }
+        /^##python\.end\(\)/ { python = 0 }
+        {
+            if (python == 1) {
+                python = 2
+            } else if (python == 2) {
+                
+            } else {
+                print
+            }
+        }
+    ' "$file" > "$tmp_file"
+
+    [[ $? -eq 0 ]] && mv "$tmp_file" "$file"
+
+done

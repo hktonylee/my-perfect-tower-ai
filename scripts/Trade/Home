@@ -22,9 +22,9 @@
 
 CLICK_START:
     {relclick(0.64, 0.83)} ; Click the first item
+    wait(0.2)
 
 CLICK_LOOP:
-    wait(0.2)
     {relclick(0.20, 0.50)} ; Click on "Trade" button
     gotoif( \
         ternary.int(ori_offset_count == offerCount(), CLICK_START, CLICK_LOOP), \

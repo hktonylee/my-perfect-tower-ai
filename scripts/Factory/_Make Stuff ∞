@@ -1,33 +1,28 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int _1
-:local int i
-:local int start
-
-;;; ---------------------------------------------------------------------------
-;;; Impulse
-
-;;; ---------------------------------------------------------------------------
-;;; Conditions
-isopen("factory")
+:global int master_mind
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#MakeMaxTier 8
+#WorkingCondition (isopen("factory") && (master_mind == 0))
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+open.factory()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+{WorkingCondition}
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    start = int.rnd(1, {MakeMaxTier})
-    i = start
-LOOP_START:
-    _1 = i
+    executesync("Factory/_Make Stuff")
+    executesync("Factory/_Make 1 Chip T2")
+    
+    gotoif(END, {WorkingCondition} == false)
+    execute("Factory/_Make Stuff ∞")
 
-    executesync("Factory/_Make 1 Plate")
-    ; executesync("Factory/_Make 1 Chip")
-    executesync("Factory/_Make 1 Dust")
-
-    ; Make from the highest tier, to prevent "starvation"
-    i = (i - 2 + {MakeMaxTier}) % {MakeMaxTier} + 1
-    gotoif(LOOP_START, i != start)
-
-    gu("_1")
+END:

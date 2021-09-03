@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 28
+#kTotalAICount 29
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -411,6 +411,25 @@
 #parseDigits.5(d1, d2, d3, d4, d5) (10000 * {parseDigit({d1})} + {parseDigits.4(({d2}), ({d3}), ({d4}), ({d5}))})
 
 #parseNumber.3(n) {parseDigits.3(sub(({n}), 0, 1), sub(({n}), 1, 1), sub(({n}), 2, 1))}
+
+;;; ---------------------------------------------------------------------------
+;;; Town Utilities
+#isOpenTown \
+    (health(true) == 0.0 &&  ( \
+        isopen("towertesting") || \
+        isopen("tradingpost") || \
+        isopen("powerplant") || \
+        isopen("factory") || \
+        isopen("laboratory") || \
+        isopen("shipyard") || \
+        isopen("workshop") || \
+        isopen("arcade") || \
+        isopen("museum") || \
+        isopen("headquarters") || \
+        isopen("constructionfirm") || \
+        isopen("statueofcubos") || \
+        isopen("mine") \
+    ) == false)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Tower Utilities

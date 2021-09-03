@@ -4,12 +4,12 @@ key.1()                 |
 key.2()                 |
 key.3()                 |Factory/_Make 1 Chip T2|
 key.4()                 |
-key.5()                 |Factory/_Make Stuff|
+key.5()                 |
 key.6()                 |Tower/_Auto Trial|
 key.7()                 |
 key.8()                 |Lab/_Nature|
 key.9()                 |
-key.a()                 |Main|
+key.a()                 |Master Mind|
 key.b()                 |
 key.c()                 |
 key.d()                 |!Delete the AI|
@@ -37,7 +37,7 @@ key.y()                 |
 key.z()                 |Keyboard/Enter|
 open.arcade()           |
 open.constructionFirm() |
-open.factory()          |
+open.factory()          |Factory/_Make Stuff ∞|
 open.headquarters()     |
 open.laboratory()       |
 open.mine()             |

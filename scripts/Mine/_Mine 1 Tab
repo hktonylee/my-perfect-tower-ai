@@ -3,7 +3,6 @@
 ;;; Declarations
 :global int dig_index
 :global int current_mine_tab
-:local int i_layer
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -29,7 +28,6 @@ DIG_START:
     executesync("Mine/_Dig 4")
 
     newlayer()
-    i_layer = i_layer + 1
-    gotoif(LAYER_START, i_layer < 2)
+    gotoif(LAYER_START, hasLayers())
 
     gu("dig_index")

@@ -76,153 +76,17 @@
 #gotoIfKeyExit(label) gotoif(({label}), gsg("input") == KeyExit)
 #clearKey gss("input", "")
 
-#gotoSwitch.1(default, \
+
+#gotoSwitch.1( \
     cond1, label1 \
-) goto(switch.1(int, ({default}), \
+) gotoif({switch.1(int, ({label1}), \
     ({cond1}), ({label1}) \
-))
+)}, \
+    ({cond1}) \
+)
 
-#gotoSwitch.2(default, \
-    cond1, cond1, \
-    cond2, cond2 \
-) goto(switch.2(int, ({default}), \
-    ({cond2}), ({label2}) \
-))
+{lua( dofile("test.lua") )}
 
-
-#gotoSwitch.3(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3 \
-) goto(switch.3(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}) \
-))
-
-#gotoSwitch.4(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4 \
-) goto(switch.4(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}) \
-))
-
-
-#gotoSwitch.5(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5 \
-) goto(switch.5(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}) \
-))
-
-
-#gotoSwitch.6(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5, \
-    cond6, cond6 \
-) goto(switch.6(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}), \
-    ({cond6}), ({label6}) \
-))
-
-
-#gotoSwitch.7(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5, \
-    cond6, cond6, \
-    cond7, cond7 \
-) goto(switch.7(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}), \
-    ({cond6}), ({label6}), \
-    ({cond7}), ({label7}) \
-))
-
-
-#gotoSwitch.8(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5, \
-    cond6, cond6, \
-    cond7, cond7, \
-    cond8, cond8 \
-) goto(switch.8(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}), \
-    ({cond6}), ({label6}), \
-    ({cond7}), ({label7}), \
-    ({cond8}), ({label8}) \
-))
-
-
-#gotoSwitch.9(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5, \
-    cond6, cond6, \
-    cond7, cond7, \
-    cond8, cond8, \
-    cond9, cond9 \
-) goto(switch.9(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}), \
-    ({cond6}), ({label6}), \
-    ({cond7}), ({label7}), \
-    ({cond8}), ({label8}), \
-    ({cond9}), ({label9}) \
-))
-
-
-#gotoSwitch.10(default, \
-    cond1, cond1, \
-    cond2, cond2, \
-    cond3, cond3, \
-    cond4, cond4, \
-    cond5, cond5, \
-    cond6, cond6, \
-    cond7, cond7, \
-    cond8, cond8, \
-    cond9, cond9, \
-    cond10, cond10 \
-) goto(switch.10(int, ({default}), \
-    ({cond2}), ({label2}), \
-    ({cond3}), ({label3}), \
-    ({cond4}), ({label4}), \
-    ({cond5}), ({label5}), \
-    ({cond6}), ({label6}), \
-    ({cond7}), ({label7}), \
-    ({cond8}), ({label8}), \
-    ({cond9}), ({label9}), \
-    ({cond10}), ({label10}) \
-))
 
 ;;; ---------------------------------------------------------------------------
 ;;; Number parsing
@@ -391,6 +255,7 @@
     )}, \
     ({cond10}), ({value10}) \
 )}
+
 
 #parseDigit(c) {switch.9(int, 0, \
     ({c}) == "1", 1, \

@@ -8,7 +8,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#kIdleRegion 3
+#kIdleRegion 4
 
 ; 0: Easy, 1: Medium, and so on
 #kIdleDifficulty 2

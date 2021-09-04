@@ -58,14 +58,14 @@ isopen("factory")
     ; Make cable T4
     {produceMagic.2( \
         "ingot", 4, "refinery", \
-        {itemLimitMax("cable", 4, 50., 2.)}, \
+        {itemLimitMax("cable", 4, 100., 2.)}, \
         {itemLimitMin("ingot", 4, 100., 1.)} \
     )}
 
     ; Make cable T3
     {produceMagic.2( \
         "ingot", 3, "refinery", \
-        {itemLimitMax("cable", 3, 50., 2.)}, \
+        {itemLimitMax("cable", 3, 100., 2.)}, \
         {itemLimitMin("ingot", 3, 100., 1.)} \
     )}
 

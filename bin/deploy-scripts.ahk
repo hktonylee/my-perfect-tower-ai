@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 WinGet, currentWin, ID, A
-WinActivate, The Perfect Tower
+WinActivate, ahk_exe The Perfect Tower II.exe
 
 CoordMode, Mouse, Screen
 MouseGetPos, oldMouseX, oldMouseY
@@ -14,6 +14,9 @@ MouseMove, 0, 0
 
 CoordMode, Mouse, Window
 MouseGetPos, clientOffsetX, clientOffsetY
+
+CoordMode, Mouse, Screen
+MouseMove, oldMouseX, oldMouseY
 
 CoordMode, Mouse, Client
 

@@ -16,34 +16,40 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#TargetChipCount 80.
+#TargetChipCount(tier) ( \
+    {switch.3(double, 0., \
+        ({tier}) == 2, 240., \
+        ({tier}) == 3, 80., \
+        ({tier}) == 4, 10. \
+    )} \
+)
 
 #HigherChipTier(tier) ({tier})
 #LowerChipTier(tier) (({tier}) - 1)
 
-#LowerTierChipRatio(tier) double.min(12., 4. * (({tier}) - 1.0))
+#LowerTierChipRatio(tier) double.min(12., 4. * (i2d({tier}) - 1.0))
 #LowerTierChipMinCount(tier) 10.
 
 #HigherCircuitTier(tier) (({tier}) * 2)
 #LowerCircuitTier(tier) (({tier}) * 2 - 1)
 
 #HigherCircuitPlateRatio(tier) ( \
-    switch.2(double, 2. \
+    {switch.2(double, 2., \
         ({tier}) == 4, 6., \
         ({tier}) == 5, 8. \
-    )
+    )} \
 )
 #LowerCircuitPlateRatio(tier) ( \
-    switch.2(double, 4. \
+    {switch.2(double, 4., \
         ({tier}) == 4, 6., \
         ({tier}) == 5, 8. \
-    )
+    )} \
 )
 
 #HigherCircuitWireRatio(tier) ( \
-    switch.1(double, 4. \
+    {switch.1(double, 4., \
         ({tier}) >= 4, 2. \
-    )
+    )} \
 )
 #LowerCircuitWireRatio(tier) 2.
 
@@ -62,11 +68,13 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 
-    tier = _1
+    tier = {switch.1(int, 3, \
+        _1 > 0, _1 \
+    )}
 
     {craftMagic.7( \
         "chip", {HigherChipTier(tier)}, \
-        {itemLimitMax("chip", {HigherChipTier(tier)}, {TargetChipCount}, 1.)}, \
+        {itemLimitMax("chip", {HigherChipTier(tier)}, {TargetChipCount(tier)}, 1.)}, \
         {itemLimitMin("chip", {LowerChipTier(tier)}, {LowerTierChipMinCount(tier)}, {LowerTierChipRatio(tier)})}, \
         {itemWithRatio("plate.circuit", {HigherCircuitTier(tier)}, {HigherCircuitPlateRatio(tier)})}, \
         {itemWithRatio("plate.circuit", {LowerCircuitTier(tier)}, {LowerCircuitPlateRatio(tier)})}, \
@@ -83,7 +91,7 @@ isopen("factory")
         {itemLimitMax.2( \
             {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
             {itemWithRatio("plate.circuit", {HigherCircuitTier(tier)}, {HigherCircuitPlateRatio(tier)})}, \
-            {TargetChipCount}, 1. / {HigherCircuitPlateRatio(tier)} \
+            {TargetChipCount(tier)}, 1. / {HigherCircuitPlateRatio(tier)} \
         )}, \
         {itemLimitMin("plate", {HigherCircuitTier(tier)}, {HigherPlateMinCount(tier)}, 1.)} \
     )}
@@ -94,7 +102,7 @@ isopen("factory")
         {itemLimitMax.2( \
             {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
             {itemWithRatio("plate.circuit", {LowerCircuitTier(tier)}, {LowerCircuitPlateRatio(tier)})}, \
-            {TargetChipCount}, 1. / {LowerCircuitPlateRatio(tier)} \
+            {TargetChipCount(tier)}, 1. / {LowerCircuitPlateRatio(tier)} \
         )}, \
         {itemLimitMin("plate", {LowerCircuitTier(tier)}, {LowerPlateMinCount(tier)}, 1.)} \
     )}
@@ -123,7 +131,7 @@ SKIP_REFINERY:
         {itemLimitMax.2( \
             {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
             {itemWithRatio("circuit", {HigherCircuitTier(tier)}, {HigherCircuitWireRatio(tier)})}, \
-            {TargetChipCount}, 1. / {HigherCircuitWireRatio(tier)} \
+            {TargetChipCount(tier)}, 1. / {HigherCircuitWireRatio(tier)} \
         )}, \
         {itemLimitMin("cable", {HigherCircuitTier(tier)}, {HigherCableMinCount(tier)}, 1.)} \
     )}
@@ -134,7 +142,7 @@ SKIP_REFINERY:
         {itemLimitMax.2( \
             {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
             {itemWithRatio("circuit", {LowerCircuitTier(tier)}, {LowerCircuitWireRatio(tier)})}, \
-            {TargetChipCount}, 1. / {LowerCircuitWireRatio(tier)} \
+            {TargetChipCount(tier)}, 1. / {LowerCircuitWireRatio(tier)} \
         )}, \
         {itemLimitMin("cable", {LowerCircuitTier(tier)}, {LowerCableMinCount(tier)}, 1.)} \
     )}

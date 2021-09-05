@@ -262,171 +262,171 @@
 
 
 #switch.2(type, else, \
-    cond1, label1, \
-    cond2, label2 \
+    cond1, value1, \
+    cond2, value2 \
 ) {switch.1({type}, \
     {switch.1({type}, ({else}), \
-        ({cond2}), ({label2}) \
+        ({cond2}), ({value2}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.3(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3 \
 ) {switch.1({type}, \
     {switch.2({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.4(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4 \
 ) {switch.1({type}, \
     {switch.3({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.5(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5 \
 ) {switch.1({type}, \
     {switch.4({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.6(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5, \
-    cond6, label6 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6 \
 ) {switch.1({type}, \
     {switch.5({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}), \
-        ({cond6}), ({label6}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.7(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5, \
-    cond6, label6, \
-    cond7, label7 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7 \
 ) {switch.1({type}, \
     {switch.6({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}), \
-        ({cond6}), ({label6}), \
-        ({cond7}), ({label7}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.8(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5, \
-    cond6, label6, \
-    cond7, label7, \
-    cond8, label8 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8 \
 ) {switch.1({type}, \
     {switch.7({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}), \
-        ({cond6}), ({label6}), \
-        ({cond7}), ({label7}), \
-        ({cond8}), ({label8}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}), \
+        ({cond8}), ({value8}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.9(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5, \
-    cond6, label6, \
-    cond7, label7, \
-    cond8, label8, \
-    cond9, label9 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8, \
+    cond9, value9 \
 ) {switch.1({type}, \
     {switch.8({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}), \
-        ({cond6}), ({label6}), \
-        ({cond7}), ({label7}), \
-        ({cond8}), ({label8}), \
-        ({cond9}), ({label9}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}), \
+        ({cond8}), ({value8}), \
+        ({cond9}), ({value9}) \
     )}, \
     ({cond1}), ({value1}) \
 )}
 
 
 #switch.10(type, else, \
-    cond1, label1, \
-    cond2, label2, \
-    cond3, label3, \
-    cond4, label4, \
-    cond5, label5, \
-    cond6, label6, \
-    cond7, label7, \
-    cond8, label8, \
-    cond9, label9, \
-    cond10, label10 \
+    cond1, value1, \
+    cond2, value2, \
+    cond3, value3, \
+    cond4, value4, \
+    cond5, value5, \
+    cond6, value6, \
+    cond7, value7, \
+    cond8, value8, \
+    cond9, value9, \
+    cond10, value10 \
 ) {switch.1({type}, \
     {switch.9({type}, ({else}), \
-        ({cond2}), ({label2}), \
-        ({cond3}), ({label3}), \
-        ({cond4}), ({label4}), \
-        ({cond5}), ({label5}), \
-        ({cond6}), ({label6}), \
-        ({cond7}), ({label7}), \
-        ({cond8}), ({label8}), \
-        ({cond9}), ({label9}), \
-        ({cond10}), ({label10}) \
+        ({cond2}), ({value2}), \
+        ({cond3}), ({value3}), \
+        ({cond4}), ({value4}), \
+        ({cond5}), ({value5}), \
+        ({cond6}), ({value6}), \
+        ({cond7}), ({value7}), \
+        ({cond8}), ({value8}), \
+        ({cond9}), ({value9}), \
+        ({cond10}), ({value10}) \
     )}, \
     ({cond1}), ({value1}) \
 )}

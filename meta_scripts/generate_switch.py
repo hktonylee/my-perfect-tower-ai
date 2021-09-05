@@ -1,8 +1,8 @@
 from lib import *
 
 def generate(n):
-    s1 = seq2(lambda i: f'cond{i}, label{i}', n, join=', \\\n    ')
-    s2 = seq2(lambda i: f'({{cond{i}}}), ({{label{i}}})', n, 2, join=', \\\n        ')
+    s1 = seq2(lambda i: f'cond{i}, value{i}', n, join=', \\\n    ')
+    s2 = seq2(lambda i: f'({{cond{i}}}), ({{value{i}}})', n, 2, join=', \\\n        ')
     return f'''
 #switch.{n}(type, else, \\
     {s1} \\

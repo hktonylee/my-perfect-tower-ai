@@ -62,8 +62,8 @@ isopen("factory")
 #HigherCableMinCount(tier) 10.
 #LowerCableMinCount(tier) 10.
 
-#HigherIngotMinCount(tier) 200.
-#LowerIngotMinCount(tier) 200.
+#HigherIngotMinCount(tier) 100.
+#LowerIngotMinCount(tier) 100.
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions

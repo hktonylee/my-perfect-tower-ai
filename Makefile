@@ -19,7 +19,7 @@ FILES += 'Factory/_Make Stuff ∞'
 FILES += 'Factory/_Make 1 Dust'
 FILES += 'Factory/_Make 1 Plate'
 FILES += 'Factory/_Make 1 Chip T2'
-FILES += 'Factory/_Make 1 Chip T3'
+FILES += 'Factory/_Make 1 Chip'
 
 FILES += 'Mine/Home'
 FILES += 'Mine/_Mine 1 Tab'

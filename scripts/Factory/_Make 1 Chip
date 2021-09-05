@@ -1,0 +1,143 @@
+:import [Library]
+:import Factory/[CraftMagic]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global int _1 ; tier
+:local int tier
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.3()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("factory")
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+#TargetChipCount 80.
+
+#HigherChipTier(tier) ({tier})
+#LowerChipTier(tier) (({tier}) - 1)
+
+#LowerTierChipRatio(tier) double.min(12., 4. * (({tier}) - 1.0))
+#LowerTierChipMinCount(tier) 10.
+
+#HigherCircuitTier(tier) (({tier}) * 2)
+#LowerCircuitTier(tier) (({tier}) * 2 - 1)
+
+#HigherCircuitPlateRatio(tier) ( \
+    switch.2(double, 2. \
+        ({tier}) == 4, 6., \
+        ({tier}) == 5, 8. \
+    )
+)
+#LowerCircuitPlateRatio(tier) ( \
+    switch.2(double, 4. \
+        ({tier}) == 4, 6., \
+        ({tier}) == 5, 8. \
+    )
+)
+
+#HigherCircuitWireRatio(tier) ( \
+    switch.1(double, 4. \
+        ({tier}) >= 4, 2. \
+    )
+)
+#LowerCircuitWireRatio(tier) 2.
+
+#HigherPlateMinCount(tier) 50.
+#LowerPlateMinCount(tier) 50.
+
+#HigherCableMaxCount(tier) 50.
+#LowerCableMaxCount(tier) 50.
+
+#HigherCableMinCount(tier) 10.
+#LowerCableMinCount(tier) 10.
+
+#HigherIngotMinCount(tier) 200.
+#LowerIngotMinCount(tier) 200.
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+    tier = _1
+
+    {craftMagic.7( \
+        "chip", {HigherChipTier(tier)}, \
+        {itemLimitMax("chip", {HigherChipTier(tier)}, {TargetChipCount}, 1.)}, \
+        {itemLimitMin("chip", {LowerChipTier(tier)}, {LowerTierChipMinCount(tier)}, {LowerTierChipRatio(tier)})}, \
+        {itemWithRatio("plate.circuit", {HigherCircuitTier(tier)}, {HigherCircuitPlateRatio(tier)})}, \
+        {itemWithRatio("plate.circuit", {LowerCircuitTier(tier)}, {LowerCircuitPlateRatio(tier)})}, \
+        {itemWithRatio("circuit", {HigherCircuitTier(tier)}, {HigherCircuitWireRatio(tier)})}, \
+        {itemWithRatio("circuit", {LowerCircuitTier(tier)}, {LowerCircuitWireRatio(tier)})}, \
+        {itemWithRatio("chip", {LowerChipTier(tier)}, {LowerTierChipRatio(tier)})} \
+    )}
+
+    gotoif(SKIP_REFINERY, active("refinery"))
+
+    ; Make circuit plate (higher tier)
+    {produceMagic.2( \
+        "plate", {HigherCircuitTier(tier)}, "refinery", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
+            {itemWithRatio("plate.circuit", {HigherCircuitTier(tier)}, {HigherCircuitPlateRatio(tier)})}, \
+            {TargetChipCount}, 1. / {HigherCircuitPlateRatio(tier)} \
+        )}, \
+        {itemLimitMin("plate", {HigherCircuitTier(tier)}, {HigherPlateMinCount(tier)}, 1.)} \
+    )}
+
+    ; Make circuit plate (lower tier)
+    {produceMagic.2( \
+        "plate", {LowerCircuitTier(tier)}, "refinery", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
+            {itemWithRatio("plate.circuit", {LowerCircuitTier(tier)}, {LowerCircuitPlateRatio(tier)})}, \
+            {TargetChipCount}, 1. / {LowerCircuitPlateRatio(tier)} \
+        )}, \
+        {itemLimitMin("plate", {LowerCircuitTier(tier)}, {LowerPlateMinCount(tier)}, 1.)} \
+    )}
+
+    ; Make cable T4
+    {produceMagic.2( \
+        "ingot", {HigherCircuitTier(tier)}, "refinery", \
+        {itemLimitMax("cable", {HigherCircuitTier(tier)}, {HigherCableMaxCount(tier)}, 2.)}, \
+        {itemLimitMin("ingot", {HigherCircuitTier(tier)}, {HigherIngotMinCount(tier)}, 1.)} \
+    )}
+
+    ; Make cable T3
+    {produceMagic.2( \
+        "ingot", {LowerCircuitTier(tier)}, "refinery", \
+        {itemLimitMax("cable", {LowerCircuitTier(tier)}, {LowerCableMaxCount(tier)}, 2.)}, \
+        {itemLimitMin("ingot", {LowerCircuitTier(tier)}, {LowerIngotMinCount(tier)}, 1.)} \
+    )}
+
+SKIP_REFINERY:
+
+    gotoif(SKIP_ASSEMBLER, active("assembler"))
+
+    ; Make circuit wire T4
+    {produceMagic.2( \
+        "cable", {HigherCircuitTier(tier)}, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
+            {itemWithRatio("circuit", {HigherCircuitTier(tier)}, {HigherCircuitWireRatio(tier)})}, \
+            {TargetChipCount}, 1. / {HigherCircuitWireRatio(tier)} \
+        )}, \
+        {itemLimitMin("cable", {HigherCircuitTier(tier)}, {HigherCableMinCount(tier)}, 1.)} \
+    )}
+
+    ; Make circuit wire T3
+    {produceMagic.2( \
+        "cable", {LowerCircuitTier(tier)}, "assembler", \
+        {itemLimitMax.2( \
+            {itemWithRatio("chip", {HigherChipTier(tier)}, 1.)}, \
+            {itemWithRatio("circuit", {LowerCircuitTier(tier)}, {LowerCircuitWireRatio(tier)})}, \
+            {TargetChipCount}, 1. / {LowerCircuitWireRatio(tier)} \
+        )}, \
+        {itemLimitMin("cable", {LowerCircuitTier(tier)}, {LowerCableMinCount(tier)}, 1.)} \
+    )}
+
+SKIP_ASSEMBLER:
+

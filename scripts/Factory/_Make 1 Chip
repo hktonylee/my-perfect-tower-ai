@@ -3,7 +3,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declarations
-:global int _1 ; tier
+:global int chip_tier
 :local int tier
 
 ;;; ---------------------------------------------------------------------------
@@ -69,7 +69,7 @@ isopen("factory")
 ;;; Actions
 
     tier = {switch.1(int, 3, \
-        _1 > 0, _1 \
+        chip_tier > 0, chip_tier \
     )}
 
     {craftMagic.7( \

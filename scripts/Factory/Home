@@ -1,3 +1,6 @@
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global int chip_tier
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -7,11 +10,11 @@
     show("factory", true)
     executesync("Factory/_Make Stuff")
 
-    _1 = 4
+    chip_tier = 4
     executesync("Factory/_Make 1 Chip")
-    _1 = 3
+    chip_tier = 3
     executesync("Factory/_Make 1 Chip")
-    _1 = 2
+    chip_tier = 2
     executesync("Factory/_Make 1 Chip")
 
     executesync("Factory/_Buy Them All")

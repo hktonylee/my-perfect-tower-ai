@@ -56,8 +56,16 @@ isopen("factory")
 #HigherPlateMinCount(tier) 50.
 #LowerPlateMinCount(tier) 50.
 
-#HigherCableMaxCount(tier) 50.
-#LowerCableMaxCount(tier) 50.
+#HigherCableMaxCount(tier) ( \
+    {switch.1(double, 50., \
+        ({tier}) <= 3, 200. \
+    )} \
+)
+#LowerCableMaxCount(tier) ( \
+    {switch.1(double, 50., \
+        ({tier}) <= 3, 200. \
+    )} \
+)
 
 #HigherCableMinCount(tier) 10.
 #LowerCableMinCount(tier) 10.

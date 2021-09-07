@@ -17,9 +17,13 @@ isopen("towertesting")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#StartRegion 0
-#StartDifficulty 0
-#TrialMode 1 ; Endless
+; #StartRegion 0
+; #StartDifficulty 0
+; #TrialMode 1 ; Endless
+
+#StartRegion 12
+#StartDifficulty 5
+#TrialMode 0 ; Normal
 
 #TowerHealth health(false)
 

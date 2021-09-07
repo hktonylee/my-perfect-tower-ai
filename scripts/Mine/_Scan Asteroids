@@ -1,0 +1,22 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("mine")
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    {requireMinRestSecond1("Scan Asterioids", 120.)}
+    {requireMinRestSecond2("Scan Asterioids")}
+
+    {relclick(0.11, 0.06)} ; Stairs button
+    {relclick(0.69, 0.83)} ; Clusters button (hopefully)
+    {relclick(0.53, 0.04)} ; Scan button (hopefully)
+
+

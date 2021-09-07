@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 31
+#kTotalAICount 37
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -14,7 +14,7 @@
 #kTickCount "<size=0>_tick_count"
 #kTickPerSecond "</size>tick_per_second"
 
-#kRegionCount 13
+#kRegionCount 15
 #kMaxRegionDifficulty (6 * {kRegionCount})
 
 ;;; ---------------------------------------------------------------------------
@@ -53,7 +53,9 @@
 #double.min.8(n1, n2, n3, n4, n5, n6, n7, n8) double.min(({n1}), {double.min.7(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}))})
 #double.min.9(n1, n2, n3, n4, n5, n6, n7, n8, n9) double.min(({n1}), {double.min.8(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}), ({n9}))})
 #double.min.10(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10) double.min(({n1}), {double.min.9(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}), ({n9}), ({n10}))})
+
 #lastTime(name) ("last_time[" . ({name}) . "]")
+#setLastTime(name) (gds({lastTime({name})}, round(gdg("time"))))
 
 ; Guard to prevent too frequent executions
 #requireMinRestSecond1(name, second) \
@@ -65,8 +67,7 @@
         ) \
     )
 
-#requireMinRestSecond2(name) \
-    gds({lastTime({name})}, round(gdg("time")))
+#requireMinRestSecond2(name) {setLastTime({name})}
 
 #gotoIfKeyLeft(label) gotoif(({label}), gsg("input") == KeyLeft)
 #gotoIfKeyRight(label) gotoif(({label}), gsg("input") == KeyRight)
@@ -474,3 +475,8 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Tower Utilities
+
+
+;;; ---------------------------------------------------------------------------
+;;; Museum Utilities
+#TargetPowerStonesElement "darkness"

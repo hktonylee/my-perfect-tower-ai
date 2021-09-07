@@ -14,6 +14,7 @@ isopen("towertesting")
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
     {relclick(0.21, 0.68)} ; the big map
+    {relscrollbar(0.18, 0.77, -1., 1.)} ; scroll to top
     {relclick(0.18, 0.77)} ; the first region
 
     gotoif(SELECT_TYPE, (region_difficulty / 6) == 0)
@@ -23,10 +24,9 @@ NEXT_BUTTON_START:
     gotoif(NEXT_BUTTON_START, j < region_difficulty / 6)
 
 SELECT_TYPE:
-    ; {relclick(0.82, 0.81)} ; "Idle" button
     {gridClick(0.48, 0.81, 0.82, 0.81, 4, 1, tower_testing_type)} ; Normal / ... / Idle buttons
 
 SELECT_DIFFICULTY:
-    wait(0.05)
+    ; wait(0.05)
     {relclick(0.5, 0.66 - 0.062 * i2d(region_difficulty % 6))} ; Difficulty button
 

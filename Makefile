@@ -24,8 +24,15 @@ FILES += 'Factory/_Make 1 Chip'
 FILES += 'Mine/Home'
 FILES += 'Mine/_Mine 1 Tab'
 FILES += 'Mine/_Dig 4'
+FILES += 'Mine/_Scan Asteroids'
 
 FILES += 'Trade/Home'
+
+FILES += 'Museum/Home'
+FILES += 'Museum/_Buy'
+FILES += 'Museum/_Combine'
+FILES += 'Museum/_Move'
+FILES += 'Museum/_Delete'
 
 FILES += 'Lab/Home'
 FILES += 'Lab/_Nature'

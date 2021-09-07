@@ -27,7 +27,7 @@ key.o()                 |Cursor/Slow Click Click|
 key.p()                 |Cursor/Click Click|
 key.q()                 |
 key.r()                 |
-key.s()                 |
+key.s()                 |Museum/Home|Museum/_Move|Museum/_Delete|
 key.t()                 |
 key.u()                 |
 key.v()                 |
@@ -47,4 +47,4 @@ open.shipyard()         |
 open.statueofcubos()    |
 open.tradingpost()      |
 open.workshop()         |
-game.newround()         |x Tower/_Slow Down x|
+game.newround()         |x Tower/_Slow Down|

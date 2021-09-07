@@ -57,7 +57,7 @@ RelClick(0.50, 0.50) ; Script editor
 Sleep, 200
 
 Send ^v ; Paste the script
-Sleep, 2500
+Sleep, 3000
 
 RelClick(0.50, 0.25) ; Import
 Sleep, 100
@@ -67,7 +67,7 @@ Send {F4}
 Sleep, 50
 
 Send {F4}
-Sleep, 1500
+Sleep, 1900
 
 RelClick(0.98, 0.96) ; Click the exit button
 Send {F4}

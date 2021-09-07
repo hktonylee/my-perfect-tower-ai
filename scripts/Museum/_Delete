@@ -1,0 +1,39 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+#MaxEquippedSlots 70
+
+;;; ---------------------------------------------------------------------------
+;;; Declaration
+:local int i
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.s()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("museum")
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    
+
+LOOP_START:
+    gotoif( \
+        LOOP_NEXT, \
+        tier("equipped", i) >= 6 || element("inventory", i) == "universal" \
+    )
+
+    ; If tier == 1,
+    delete("equipped", i)
+
+LOOP_NEXT:
+    i = i + 1
+    gotoif(LOOP_START, i < {MaxEquippedSlots})
+
+    execute("Museum/_Delete")
+
+
+

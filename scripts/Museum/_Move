@@ -1,0 +1,37 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declaration
+:local int i
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.s()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("museum")
+
+;;; ---------------------------------------------------------------------------
+;;; Actions 
+
+LOOP_START:
+    gotoif( \
+        LOOP_NEXT, \
+        tier("inventory", i) < 12 && element("inventory", i) == {TargetPowerStonesElement} \
+    )
+
+    ; If tier >= 12,
+    move("inventory", i, "equipped")
+
+LOOP_NEXT:
+    i = i + 1
+    gotoif(LOOP_START, i < 24)
+
+    i = 0
+    goto(LOOP_START)
+
+    execute("Museum/_Move")
+
+
+

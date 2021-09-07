@@ -1,0 +1,43 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declaration
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.s()
+
+;;; ---------------------------------------------------------------------------
+;;; Conditions
+isopen("museum")
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+
+    fill(true)
+    ; buyMarket("darkness", 100)
+
+    execute("Museum/_Buy")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Buy")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Buy")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Buy")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Buy")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+    execute("Museum/_Combine")
+
+
+
+

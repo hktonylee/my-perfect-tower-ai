@@ -62,12 +62,12 @@ isopen("factory")
 
 #HigherCableMaxCount(tier) ( \
     {switch.1(double, 100., \
-        ({tier}) <= 3, 50. * i2d(4 ^ ({tier})) \
+        ({tier}) <= 3, 100. * i2d(4 ^ (4 - ({tier}))) \
     )} \
 )
 #LowerCableMaxCount(tier) ( \
     {switch.1(double, 100., \
-        ({tier}) <= 3, 50. * i2d(4 ^ ({tier})) \
+        ({tier}) <= 3, 100. * i2d(4 ^ (4 - ({tier}))) \
     )} \
 )
 

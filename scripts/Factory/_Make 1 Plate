@@ -15,7 +15,16 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#minPlateCount 1000.
+#maxPlateCount(tier) ( \
+    {switch.1(double, 200., \
+        ({tier}) <= 3, 200. * i2d(4 ^ (4 - ({tier}))) \
+    )} \
+)
+#maxIngotCount(tier) ( \
+    {switch.1(double, 200., \
+        ({tier}) <= 3, 200. * i2d(4 ^ (4 - ({tier}))) \
+    )} \
+)
 #minDustCount 1000.
 #maxDensePlateCount(tier) max(20., 100. - 15. * i2d({tier}))
 
@@ -29,7 +38,7 @@ isopen("factory")
     ; make ingot
     {produceMagic.2( \
         "dust", {tier}, "oven", \
-        {itemLimitMax("ingot", {tier}, 200., 1.)}, \
+        {itemLimitMax("ingot", {tier}, {maxIngotCount({tier})}, 1.)}, \
         {itemLimitMin("dust", {tier}, 500., 1.)} \
     )}
 
@@ -40,7 +49,7 @@ SKIP_OVEN:
     ; Make plate
     {produceMagic.2( \
         "ingot", {tier}, "presser", \
-        {itemLimitMax("plate", {tier}, 200., 1.)}, \
+        {itemLimitMax("plate", {tier}, {maxPlateCount({tier})}, 1.)}, \
         {itemLimitMin("ingot", {tier}, 100., 1.)} \
     )}
 

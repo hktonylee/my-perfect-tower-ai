@@ -12,8 +12,18 @@ isopen("factory")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#minLowerTierCount 1000.0
-#minHigherTierCount 200.0
+#minLowerTierCount(tier) ( \
+    {switch.2(double, 1000., \
+        ({tier}) == 1, 9000., \
+        ({tier}) == 2, 3000. \
+    )} \
+)
+#minHigherTierCount(tier) ( \
+    {switch.2(double, 200., \
+        ({tier}) == 1, 2000., \
+        ({tier}) == 2, 1000. \
+    )} \
+)
 
 #minIngotCount 3000.0
 
@@ -22,7 +32,7 @@ isopen("factory")
 ; Tier1: 1440
 ; Tier2: 500
 ; Tier3: 290
-#maxCrusherCount(tier) (12000. / i2d({tier}))
+#maxCrusherCount(tier) (600000. / i2d(2 ^ ({tier})))
 
 
 ;;; ---------------------------------------------------------------------------
@@ -32,8 +42,8 @@ isopen("factory")
     ; Make dust from lump
     {craftMagic.2( \
         "lump", fromDustTier, \
-        {itemLimitMin("dust", fromDustTier, {minLowerTierCount}, 4.)}, \
-        {itemLimitMin("dust", fromDustTier + 1, {minHigherTierCount}, 1.)} \
+        {itemLimitMin("dust", fromDustTier, {minLowerTierCount(fromDustTier)}, 4.)}, \
+        {itemLimitMin("dust", fromDustTier + 1, {minHigherTierCount(fromDustTier)}, 1.)} \
     )}
 
     ; If mixer is working, don't add more to it

@@ -57,7 +57,7 @@ RelClick(0.50, 0.50) ; Script editor
 Sleep, 200
 
 Send ^v ; Paste the script
-Sleep, 3000
+Sleep, 3500
 
 RelClick(0.50, 0.25) ; Import
 Sleep, 100

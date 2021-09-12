@@ -17,7 +17,8 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
 #TargetChipCount(tier) ( \
-    {switch.3(double, 0., \
+    {switch.4(double, 0., \
+        ({tier}) == 1, 2000., \
         ({tier}) == 2, 240., \
         ({tier}) == 3, 80., \
         ({tier}) == 4, 25. \
@@ -34,20 +35,23 @@ isopen("factory")
 #LowerCircuitTier(tier) (({tier}) * 2 - 1)
 
 #HigherCircuitPlateRatio(tier) ( \
-    {switch.2(double, 2., \
+    {switch.3(double, 2., \
+        ({tier}) == 1, 1., \
         ({tier}) == 4, 6., \
         ({tier}) == 5, 8. \
     )} \
 )
 #LowerCircuitPlateRatio(tier) ( \
-    {switch.2(double, 4., \
+    {switch.3(double, 4., \
+        ({tier}) == 1, 1., \
         ({tier}) == 4, 6., \
         ({tier}) == 5, 8. \
     )} \
 )
 
 #HigherCircuitWireRatio(tier) ( \
-    {switch.1(double, 4., \
+    {switch.2(double, 4., \
+        ({tier}) == 1, 2., \
         ({tier}) >= 4, 2. \
     )} \
 )
@@ -58,12 +62,12 @@ isopen("factory")
 
 #HigherCableMaxCount(tier) ( \
     {switch.1(double, 100., \
-        ({tier}) <= 3, 200. \
+        ({tier}) <= 3, 50. * i2d(4 ^ ({tier})) \
     )} \
 )
 #LowerCableMaxCount(tier) ( \
     {switch.1(double, 100., \
-        ({tier}) <= 3, 200. \
+        ({tier}) <= 3, 50. * i2d(4 ^ ({tier})) \
     )} \
 )
 

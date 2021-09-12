@@ -11,11 +11,10 @@
     executesync("Factory/_Make Stuff")
 
     chip_tier = 4
+NEXT_CHIP:
     executesync("Factory/_Make 1 Chip")
-    chip_tier = 3
-    executesync("Factory/_Make 1 Chip")
-    chip_tier = 2
-    executesync("Factory/_Make 1 Chip")
+    chip_tier = chip_tier - 1
+    gotoif(NEXT_CHIP, chip_tier >= 1)
 
     executesync("Factory/_Buy Them All")
     show("factory", false)

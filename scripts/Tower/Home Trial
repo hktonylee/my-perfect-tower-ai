@@ -13,7 +13,8 @@
 ; 0: Easy, 1: Medium, and so on
 #kTowerDifficulty 0
 
-#kTowerTestingMaxTime 60.0
+#kTowerTestingHardMaxTime 180.0
+#kTowerTestingSoftMaxTime 60.0
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -37,9 +38,10 @@
     {setLastTime("Tower")} ; Set the timer
 
 WAITING_TO_DIE:
-    {gotoSwitch.2( \
+    {gotoSwitch.3( \
         WAITING_TO_DIE, {TowerHealth} > 0.0, \
-        TIME_OUT, {sinceLastTime("Tower")} > {kTowerTestingMaxTime} \
+        TIME_OUT, {TowerHealth} == 0.0 && {sinceLastTime("Tower")} > {kTowerTestingSoftMaxTime}, \
+        TIME_OUT, {sinceLastTime("Tower")} > {kTowerTestingHardMaxTime} \
     )}
 
 ZERO_HEALTH:

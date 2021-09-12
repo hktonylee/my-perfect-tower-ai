@@ -12,7 +12,7 @@ isopen("museum")
 
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
-    buy({TargetPowerStonesElement})
+    buyMarket({TargetPowerStonesElement}, {PowerStonesBlackMarketTier})
     execute("Museum/_Buy")
 
 

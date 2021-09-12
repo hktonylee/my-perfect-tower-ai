@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 37
+#kTotalAICount 38
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -55,7 +55,9 @@
 #double.min.10(n1, n2, n3, n4, n5, n6, n7, n8, n9, n10) double.min(({n1}), {double.min.9(({n2}), ({n3}), ({n4}), ({n5}), ({n6}), ({n7}), ({n8}), ({n9}), ({n10}))})
 
 #lastTime(name) ("last_time[" . ({name}) . "]")
+#getLastTime(name) gdg({lastTime({name})})
 #setLastTime(name) (gds({lastTime({name})}, round(gdg("time"))))
+#sinceLastTime(name) (gdg("time") - {getLastTime({name})})
 
 ; Guard to prevent too frequent executions
 #requireMinRestSecond1(name, second) \
@@ -475,8 +477,10 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Tower Utilities
-
+#TowerHealth health(false)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Museum Utilities
+; #TargetPowerStonesElement "darkness"
 #TargetPowerStonesElement "darkness"
+#PowerStonesBlackMarketTier 18

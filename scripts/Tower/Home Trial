@@ -1,0 +1,56 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declarations
+:global int region_difficulty ; start with 0, 0-5: first region, 6-11: second-region
+:global int tower_testing_type ; 0: Normal, 1: Endless, 2: Challenge, 3: Idle
+:local int i
+
+;;; ---------------------------------------------------------------------------
+;;; Macros
+#kTowerRegion 0
+
+; 0: Easy, 1: Medium, and so on
+#kTowerDifficulty 0
+
+#kTowerTestingMaxTime 60.0
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    show("towertesting", true)
+
+    region_difficulty = 6 * {kTowerRegion} + {kTowerDifficulty}
+    tower_testing_type = 1 ; Endless
+    executesync("Tower/_Select Level")
+
+    {relclick(0.15, 0.07)} ; "Launch" button
+
+    waituntil({TowerHealth} > 0.) ; Wait until the game is opened
+
+    {relclick(0.30, 0.51)} ; Close the Upgrade menu
+    wait(1.0)
+    {relclick(0.02, 0.51)} ; Open the Upgrade menu
+
+    {setLastTime("Tower")} ; Set the timer
+
+WAITING_TO_DIE:
+    {gotoSwitch.2( \
+        WAITING_TO_DIE, {TowerHealth} > 0.0, \
+        TIME_OUT, {sinceLastTime("Tower")} > {kTowerTestingMaxTime} \
+    )}
+
+ZERO_HEALTH:
+    {relclick(0.59, 0.33)} ; "Respawn"
+    goto(WAITING_TO_DIE)
+
+TIME_OUT: ; Leave the tower testing be the bottom-left button
+    {relclick(0.03, 0.04)} ; Exit button
+    wait(1.0)
+    {relclick(0.28, 0.32)} ; "To Town"
+    wait(2.0)
+    wait(2.0) ; Seems like a bug in the AI, after "To Town" it will eat one of the command
+
+END:

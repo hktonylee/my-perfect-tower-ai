@@ -20,7 +20,7 @@ isopen("factory")
     {switch.3(double, 0., \
         ({tier}) == 2, 240., \
         ({tier}) == 3, 80., \
-        ({tier}) == 4, 10. \
+        ({tier}) == 4, 25. \
     )} \
 )
 
@@ -57,12 +57,12 @@ isopen("factory")
 #LowerPlateMinCount(tier) 50.
 
 #HigherCableMaxCount(tier) ( \
-    {switch.1(double, 50., \
+    {switch.1(double, 100., \
         ({tier}) <= 3, 200. \
     )} \
 )
 #LowerCableMaxCount(tier) ( \
-    {switch.1(double, 50., \
+    {switch.1(double, 100., \
         ({tier}) <= 3, 200. \
     )} \
 )

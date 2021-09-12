@@ -7,7 +7,8 @@ FILES += 'Cursor/Position'
 
 FILES += 'Master Mind'
 
-FILES += 'Tower/Home'
+FILES += 'Tower/Home Idle'
+FILES += 'Tower/Home Trial'
 FILES += 'Tower/_Select Level'
 FILES += 'Tower/_Auto Trial'
 FILES += 'Tower/_Slow Down'

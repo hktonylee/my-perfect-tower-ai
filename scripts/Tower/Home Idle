@@ -24,8 +24,6 @@ key.n()
     region_difficulty = 6 * {kIdleRegion} + {kIdleDifficulty}
     tower_testing_type = 3 ; Idle
     executesync("Tower/_Select Level")
-    gu("region")
-    gu("difficulty")
 
     {relclick(0.15, 0.07)} ; "Launch" button
 

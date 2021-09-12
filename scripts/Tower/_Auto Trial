@@ -25,8 +25,6 @@ isopen("towertesting")
 #StartDifficulty 5
 #TrialMode 0 ; Normal
 
-#TowerHealth health(false)
-
 ;;; ---------------------------------------------------------------------------
 ;;; Actions
 

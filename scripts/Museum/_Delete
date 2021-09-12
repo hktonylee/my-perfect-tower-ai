@@ -23,7 +23,8 @@ isopen("museum")
 LOOP_START:
     gotoif( \
         LOOP_NEXT, \
-        tier("equipped", i) >= 6 || element("inventory", i) == "universal" \
+        tier("equipped", i) >= 20 \
+        || element("equipped", i) == "universal" \
     )
 
     ; If tier == 1,

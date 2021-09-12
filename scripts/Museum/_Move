@@ -1,6 +1,10 @@
 :import [Library]
 
 ;;; ---------------------------------------------------------------------------
+;;; Macros
+#MoveBelowTier ({PowerStonesBlackMarketTier} + 24/2 - 1)
+
+;;; ---------------------------------------------------------------------------
 ;;; Declaration
 :local int i
 
@@ -18,10 +22,10 @@ isopen("museum")
 LOOP_START:
     gotoif( \
         LOOP_NEXT, \
-        tier("inventory", i) < 12 && element("inventory", i) == {TargetPowerStonesElement} \
+        tier("inventory", i) < {MoveBelowTier} && element("inventory", i) == {TargetPowerStonesElement} \
     )
 
-    ; If tier >= 12,
+    ; If tier >= {MoveBelowTier} || element != target,
     move("inventory", i, "equipped")
 
 LOOP_NEXT:

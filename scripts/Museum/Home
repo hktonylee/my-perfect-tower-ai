@@ -2,6 +2,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declaration
+:local int i
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
@@ -15,29 +16,13 @@ isopen("museum")
 ;;; Actions
 
     fill(true)
-    ; buyMarket("darkness", 100)
 
+LOOP_START:
     execute("Museum/_Buy")
     execute("Museum/_Combine")
     execute("Museum/_Combine")
     execute("Museum/_Combine")
-    execute("Museum/_Buy")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Buy")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Buy")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Buy")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-    execute("Museum/_Combine")
-
-
+    i = i + 1
+    gotoif(LOOP_START, i < 22)
 
 

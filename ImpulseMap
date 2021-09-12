@@ -22,7 +22,7 @@ key.j()                 |Keyboard/Down|
 key.k()                 |Keyboard/Up|
 key.l()                 |Keyboard/Right|
 key.m()                 |Mine/_Mine 1 Tab|
-key.n()                 |Tower/Home|
+key.n()                 |Tower/Home Idle|
 key.o()                 |Cursor/Slow Click Click|
 key.p()                 |Cursor/Click Click|
 key.q()                 |

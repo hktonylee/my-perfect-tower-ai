@@ -22,7 +22,7 @@ open.factory()
 ;;; Actions
     executesync("Factory/_Make Stuff")
 
-    chip_tier = 4
+    chip_tier = 5
 NEXT_CHIP:
     executesync("Factory/_Make 1 Chip")
     chip_tier = chip_tier - 1

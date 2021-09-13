@@ -16,6 +16,7 @@ key.a()
     executesync("Trade/Home")
     executesync("Factory/Home")
     executesync("Lab/Home")
+    executesync("Workshop/Home")
     executesync("Tower/Home Trial")
 
     goto(0)

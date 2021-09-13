@@ -16,8 +16,9 @@ isopen("factory")
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
 #maxPlateCount(tier) ( \
-    {switch.1(double, 200., \
-        ({tier}) <= 3, 200. * i2d(4 ^ (4 - ({tier}))) \
+    {switch.2(double, 200., \
+        ({tier}) <= 3, 400. * i2d(4 ^ (4 - ({tier}))), \
+        ({tier}) <= 6, 400. \
     )} \
 )
 #maxIngotCount(tier) ( \
@@ -26,7 +27,7 @@ isopen("factory")
     )} \
 )
 #minDustCount 1000.
-#maxDensePlateCount(tier) max(20., 100. - 15. * i2d({tier}))
+#maxDensePlateCount(tier) max(50., 120. - 15. * i2d({tier}))
 
 #tier _1
 

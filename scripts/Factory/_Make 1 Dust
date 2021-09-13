@@ -27,12 +27,17 @@ isopen("factory")
 
 #minIngotCount 3000.0
 
-#maxMixerCount 6000.0
+#maxMixerCount 20000.0
 
 ; Tier1: 1440
 ; Tier2: 500
 ; Tier3: 290
-#maxCrusherCount(tier) (600000. / i2d(2 ^ ({tier})))
+; Tier7+: 0 ; Want to keep 1000 of the orc first
+#maxCrusherCount(tier) ( \
+    {switch.1(double, 0., \
+        ({tier}) < 7, (600000. / i2d(2 ^ ({tier}))) \
+    )} \
+)
 
 
 ;;; ---------------------------------------------------------------------------

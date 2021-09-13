@@ -1,0 +1,29 @@
+:import [Library]
+
+;;; ---------------------------------------------------------------------------
+;;; Declaration
+:local int i
+
+;;; ---------------------------------------------------------------------------
+;;; Impulse
+key.w()
+
+;;; ---------------------------------------------------------------------------
+;;; Actions
+    {requireMinRestSecond1("Workshop", (5. * 60.))}  ; Need 5 mins to retry workshop
+    {requireMinRestSecond2("Workshop")}
+
+    show("workshop", true)
+
+    {relclick(0.11, 0.06)} ; Click "Stair"
+    {relclick(0.89, 0.83)} ; Click "Experiment"
+
+    {relclick(0.69, 0.69)} ; Click Atk/Dfd upgrade
+
+ELEMENT_UPGRADE_LOOP:
+    {gridClick(0.43, 0.32, 0.96, 0.32, 10, 1, i)} ; Click element button
+    {relclick(0.55, 0.05)} ; Click upgrade button
+    i = i + 1
+    gotoif(ELEMENT_UPGRADE_LOOP, i < 10)
+
+    show("workshop", false)

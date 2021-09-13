@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 38
+#kTotalAICount 39
 
 #KeyLeft "<"
 #KeyRight ">"

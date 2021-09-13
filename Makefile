@@ -29,6 +29,8 @@ FILES += 'Mine/_Scan Asteroids'
 
 FILES += 'Trade/Home'
 
+FILES += 'Workshop/Home'
+
 FILES += 'Museum/Home'
 FILES += 'Museum/_Buy'
 FILES += 'Museum/_Combine'

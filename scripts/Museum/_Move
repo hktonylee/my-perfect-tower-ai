@@ -2,7 +2,7 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Macros
-#MoveBelowTier ({PowerStonesBlackMarketTier} + 24/2 - 1)
+#MoveFromTier ({PowerStonesStartTier} + 24/2 - 1)
 
 ;;; ---------------------------------------------------------------------------
 ;;; Declaration
@@ -22,18 +22,16 @@ isopen("museum")
 LOOP_START:
     gotoif( \
         LOOP_NEXT, \
-        tier("inventory", i) < {MoveBelowTier} && element("inventory", i) == {TargetPowerStonesElement} \
+        tier("inventory", i) < 0 \
+        || (tier("inventory", i) < {MoveFromTier} && element("inventory", i) == {TargetPowerStoneElement}) \
     )
 
-    ; If tier >= {MoveBelowTier} || element != target,
+    ; If tier >= 0 && (tier >= {MoveFromTier} || element != target),
     move("inventory", i, "equipped")
 
 LOOP_NEXT:
     i = i + 1
     gotoif(LOOP_START, i < 24)
-
-    i = 0
-    goto(LOOP_START)
 
     execute("Museum/_Move")
 

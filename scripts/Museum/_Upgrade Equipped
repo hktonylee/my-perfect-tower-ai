@@ -7,36 +7,37 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Declaration
 :local int i
+:local int j
 
 ;;; ---------------------------------------------------------------------------
 ;;; Impulse
-key.s()
 
 ;;; ---------------------------------------------------------------------------
 ;;; Conditions
 isopen("museum")
 
 ;;; ---------------------------------------------------------------------------
-;;; Actions
-    
+;;; Actions 
 
-LOOP_START:
-    gotoif( \
-        LOOP_NEXT, \
-        tier("equipped", i) < 0 \
-        || (element("equipped", i) == {TargetPowerStoneElement} && tier("equipped", i) >= {MoveFromTier}) \
-        || (element("equipped", i) != {TargetPowerStoneElement} && tier("equipped", i) >= 12) \
-        || element("equipped", i) == "universal" \
+; Delete all gems in inventory >= position 2
+CLEAR_LOOP:
+    delete("inventory", i + 2)
+    i = i + 1
+    gotoif(CLEAR_LOOP, i < 22) ; i < 24
+
+; Move the equipped gem to inventory
+MOVE_LOOP:
+    gotoif(MOVE_LOOP_NEXT, \
+        element("equipped", j) != {TargetPowerStoneElement} \
     )
 
-    ; If tier == 1,
-    delete("equipped", i)
+    ; If element == target
+    move("equipped", j, "inventory")
 
-LOOP_NEXT:
-    i = i + 1
-    gotoif(LOOP_START, i < {MaxEquippedSlots})
+MOVE_LOOP_NEXT:
+    j = j + 1
+    gotoif(MOVE_LOOP, j < {MaxEquippedSlots})
 
-    execute("Museum/_Delete")
 
 
 

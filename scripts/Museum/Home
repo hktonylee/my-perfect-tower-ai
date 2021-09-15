@@ -1,6 +1,9 @@
 :import [Library]
 
 ;;; ---------------------------------------------------------------------------
+;;; Macros
+
+;;; ---------------------------------------------------------------------------
 ;;; Declaration
 :local int i
 
@@ -18,11 +21,25 @@ isopen("museum")
     fill(true)
 
 LOOP_START:
-    execute("Museum/_Buy")
+    execute({switch.1(string, "Museum/_Buy Market", \
+        {PowerStonesStartTier} == 1, "Museum/_Buy Shop" \
+    )})
     execute("Museum/_Combine")
     execute("Museum/_Combine")
     execute("Museum/_Combine")
     i = i + 1
-    gotoif(LOOP_START, i < 22)
+    gotoif(LOOP_START, i < 20)
 
+MONITOR_LOOP:
+    gotoif(MONITOR_LOOP, freeSlots("equipped") > 0)
 
+    ; There is not many spaces in the inventory.. let's upgrade equipped gems!
+    stop({switch.1(string, "Museum/_Buy Market", \
+        {PowerStonesStartTier} == 1, "Museum/_Buy Shop" \
+    )})
+    stop("Museum/_Move")
+    executesync("Museum/_Upgrade Equipped")
+
+    stop("Museum/_Combine")
+    execute("Museum/Home")
+    execute("Museum/_Move")

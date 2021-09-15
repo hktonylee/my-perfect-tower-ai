@@ -2,7 +2,7 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Constants
 
-#kTotalAICount 39
+#kTotalAICount 41
 
 #KeyLeft "<"
 #KeyRight ">"
@@ -481,6 +481,8 @@
 
 ;;; ---------------------------------------------------------------------------
 ;;; Museum Utilities
-; #TargetPowerStonesElement "darkness"
-#TargetPowerStonesElement "darkness"
-#PowerStonesBlackMarketTier 18
+#TargetPowerStoneElement "earth"
+#PowerStonesStartTier 18
+
+#MaxEquippedSlots 130
+
